@@ -1,0 +1,7 @@
+* xref:01-pattern.adoc[1. Solution Pattern: App Modernization]
+
+* xref:02-architecture.adoc[2. Architecture]
+
+* xref:03-demo.adoc[3. Demo / Walkthrough]
+
+* xref:04-workshop.adoc[4. Workshop]

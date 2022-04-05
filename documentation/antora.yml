@@ -1,0 +1,7 @@
+name: solution-pattern-app-modernization
+title: "Solution Pattern: App Modernization"
+version: main
+nav:
+  - modules/ROOT/nav.adoc
+
+start_page: ROOT:index.adoc

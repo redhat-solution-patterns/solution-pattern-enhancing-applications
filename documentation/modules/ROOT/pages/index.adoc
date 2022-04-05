@@ -1,0 +1,27 @@
+= Solution Pattern: App Modernization
+:page-layout: home
+:!sectids:
+
+[.text-center.strong]
+== Introduction
+
+What are Solution Patterns?
+
+[.tiles.browse]
+== Browse modules
+
+[.tile]
+.xref:01-pattern.adoc[1. Solution Pattern: App Modernization]
+* Chapter 1
+
+[.tile]
+.xref:02-architecture.adoc[2. Architecture]
+* Chapter 1
+
+[.tile]
+.xref:03-demo.adoc[3. Demo / Walkthrough]
+* Chapter 1
+
+[.tile]
+.xref:04-workshop.adoc[4. Workshop]
+* Chapter 1
