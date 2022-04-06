@@ -17,11 +17,14 @@ What are Solution Patterns?
 
 [.tile]
 .xref:02-architecture.adoc[2. Architecture]
-* Chapter 1
+* xref:02-architecture.adoc#runtimearchitecture[Runtime Architecture]
+* xref:02-architecture.adoc#technology[The Technology]
+* xref:02-architecture.adoc#deploymentarchitecture[Deployment Architecture]
+
 
 [.tile]
 .xref:03-demo.adoc[3. Demo / Walkthrough]
-* Chapter 1
+* xref:03-demo.adoc#demo[Demo]
 
 [.tile]
 .xref:04-workshop.adoc[4. Workshop]

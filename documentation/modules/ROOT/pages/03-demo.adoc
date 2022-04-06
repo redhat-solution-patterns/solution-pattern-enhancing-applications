@@ -1,3 +1,4 @@
 = Demo / Walkthrough
 
+[#demo]
 video::3yULVMdqJ98[youtube, width=800, height=480]
