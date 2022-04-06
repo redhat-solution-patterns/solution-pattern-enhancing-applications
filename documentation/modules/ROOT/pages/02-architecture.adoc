@@ -1,2 +1,174 @@
 = Architecture
 
+The architecture will need to support these paradigms
+
+* API First Approach resulting in OpenAPI specifications
+* Enable Parallel development streams
+* Managed API Management platform for securing and managing the backend services
+* Managed  Kafka to process user activity event streams
+* Preference for a managed cloud services for easy and rapid ramp up
+
+
+:sectnums:
+[#runtime-architecture]
+== Runtime architecture
+
+[img-runtimearchitecture]
+.Globex Runtime Architecture 
+image::02/globex-02-runtimearchitecture.png[width=105%]
+
+Visitors engage with the retail website in a number of ways
+
+* view list of products
+* search for products
+* like/favourite a product 
+view product details 
+* add to cart
+
+Each of these activities generate a stream of events which are captured by  the *user-activity-tracker* service. This service then pushes the events into the  Kafka streaming platform. 
+The events  can then be consumed by other services such as the *product-recommendation-engine* which will power the list of  featured products.
+A new *Featured Products* section is created to showcase the top 10 recommended products as recommended 
+
+Since Globex does not want to allow  direct access to these  backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform
+
+
+[#technology]
+== The technology
+
+=== Apicurio
+As part of theAPI first approach, the first step is to design these APIs before actually implementing them. 
+Apicurio Studio  is an environment which allows one to collaboratively work on API specifications -  today this is not a managed service - but will be offered as a managed service in the near future.
+
+Even before the implementation starts, the various stakeholders come together to define the API specs. The API are defined for the existing catalogue service as well. 
+
+[img-apicurio-landing]
+.Apicurio studio landing page
+image::02/globex-02-apicurio-landing.png[width=100%]
+
+This designer provides a graphical way of designing all the aspects of an OpenAPI - had different paths, datatypes and canned responses. For instance - <show example here>
+Which can then be later used to mock out those services.
+
+[img-apicurio]
+.Apicurio studio API designer
+image::02/globex-02-apicurio.png[width=100%]
+
+It also allows you to work in both a graphical way of doing things and also with the source. The OpenAPI can be viewed as both a YAML and a JSON document.
+
+[#service-registry]
+=== Service Registry
+Once the API design s complete, and we have the first version of the API, this can now be published  in a schema registry. 
+Red Hat  OpenShift Service Registry allows us to publish the OpenAPIs, makes it accessible, and manages the OpenAPI from within the Red Hat’s cloud console
+
+[img-runtimearchitecture]
+.Red Hat OpenShift Service Registry
+image::02/globex-02-serviceregistry.png[width=100%]
+
+You can upload new artefacts, new vesions,  view the metadata, download the specs, view documentation and view the content as well.
+Through Content rules one can validate new versions of the APIs against the existing specs to ensure validity and backward compatibility.
+
+[#Microcks]
+=== Microcks
+We can also build mocks for the APIs using the same OpenAPIs.
+
+Microcks is a tool which allows one to upload the same OpenAPI spec, and to build mocks for the APIs. This is for use of the teams who will actually consume the APIs and they can use these mocks to develop their pieces of code even before the APIs are completely implemented
+
+[img-microcks]
+.Microcks
+image::02/globex-02-microcks.png[width=100%]
+
+Each of the mocls that are created out of the OpenAPI's examples   has its own URL which can be invoked to provide a realistic response. This allows front end and mobile app developers to develop against the OpenAPIs specs without waiting for the final implementation of the backend services.
+
+[#rhoam]
+=== Red Hat OpenShift API Management
+We use the managed *Red Hat OpenShift API Management* platform here to publish, manage and secure the backend APIs.
+
+Each API can be configured to be secured using a number of ways. In this case, the APIs  are secured with an API keys which will be passed through http request header. The OpenShift API Management platform allows you to have various application plans. Developers can subscribe to those APIs and can access APIs through an assigned API key  securely.  You can monitor the APIs and also track usage
+
+[img-rhoam]
+.Red Hat OpenShift API Management
+image::02/globex-02-rhoam.png[width=100%]
+
+
+As a developer, you would like to build functionality around the APIs. There is also a Development Portal  which is currently under, well, development. You can sign in as a developer here.  This developer  has already subscribed to the API and is given an API key which should be used in all API calls to ensure the calls are authenticated by the API management platform.
+
+[img-rhoam-dev-portal]
+.Red Hat OpenShift API Management Dev Portal
+image::02/globex-02-dev-portal.png[width=100%]
+
+The devportal allows viewing Live documentation as well, which is another view of the OpenAPI specs. Developers can try it out  to see what kind of responses they can get back. The developers can also view statistics for their account  in a graph format
+
+[img-rhoam-dev-portal-statistics]
+.Red Hat OpenShift API Management Dev Portal statistics
+image::02/globex-02-rhoam-devportal-statistics.png[width=100%]
+
+
+=== Kafka
+Red Hat OpenShift Streams for Apache Kafka  is a fully hosted and managed Kafka cloud service. This serves the requirement of Globex who did not want to install and maintain a streaming platform. This service can be very easily consumed and used by developers. 
+
+There are a number of topocs created for Globex.  The globex.tracking topic is one which ingests the activity events. This is then consumed by the Recommendation Engine which is a Kafka Streams application which then builds a list of Top 10 most popular products with most user interest.
+
+[img-kafka-topics]
+.Red Hat OpenShift Streams for Apache Kafka
+image::02/globex-02-kafka-topics.png[width=100%]
+
+This is a managed service and security is very important. The service allows fine grained access	controls based on user accounts and service accounts. You can define what each account is allowed to do. 
+
+[img-kafka-topics]
+.Red Hat OpenShift Streams for Apache Kafka - Access Control
+image::02/globex-02-kafka-access.png[width=100%]
+
+
+With all this tooling in place as part of App modernization, GitOps,  Continuous integration, deployment in staging. This means that Business can easily follow progress at different points of building the functionality which you can see here
+
+=== Globex retail application
+
+The new homepage of the Coolstuff store displays  the top currently  featured products. 
+
+[img-globex-02-ui-landing]
+.Globex App Home Page
+image::02/globex-02-ui-landing.png[width=100%]
+
+
+The featured projects are diplayed as a carousel in the page displaying the paginated list of products. Visitors can  drill down to view product details,
+sdd to the cart, view and edit catt, and also _like_ their favourite products
+
+[img-globex-02-ui-pagination]
+.Globex - Paginated products list with Featured products carousel
+image::02/globex-02-ui-pagination.png[width=100%]
+
+
+Each of the activities generates a continuous stream of events which is then used to recommend the top 10 products to be featured.
+
+=== Kafdrop
+<generate more records now>
+Kafdrop is a tool through which you can view this continuous stream of events. Kafdrop will point to the managed instance. We can view the topics and messaged easily as part of the development process
+
+[img-globex-02-kafdrop]
+.Kafdrop
+image::02/globex-02-kafdrop.png[width=100%]
+
+The Kafka streams application creates a number of other topics for data aggreation, and pushes the aggregated products list as events into the product-score-aggreated topic
+
+[img-globex-02-kafdrop-aggreated]
+.Kafdrop - Aggregated topic with featured products
+image::02/globex-02-kafdrop-aggreated.png[width=100%]
+
+
+
+== Deployment Architecture
+
+The various components of the application runs on various footprints.
+
+* API Curio is a free hosted developer tool access throught https://studio.apicur.io/ 
+* The various backend services are deployed as containers on Red Hat OpenShift Container Platform running on public cloud. Microcks and kafdrop tools are also deployed on OpenShift Container Platform. The UI itself is an Angular app which runs on NodeJS and deployed on the same  OpenShift platform.
+* Managed Red Hat OpenShift Streams for Apache Kafka and Red Hat OpenShift Service Registry are deployed and accessed as fully managed services somewhere in the cloud and accessed throught Red Hat Console
+* Red Hat OpenShift API Management is running on OpenShift Dedicated deployed on allows
+* The https://quay.io/ is a hosted conatiners repository which stored the container images for the backend and UI application.
+
+
+[img-globex-02-deployment-architecture]
+.Kafdrop - Deployment Architecture
+image::02/globex-02-deployment-architecture.png[width=100%]
+
+
+
