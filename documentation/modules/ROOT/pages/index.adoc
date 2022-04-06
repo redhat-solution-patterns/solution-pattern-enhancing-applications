@@ -1,17 +1,17 @@
-= Solution Pattern: Enhancing Applications with Application Services
+= App Modernization: Enhancing Applications with Application Services
+
 :page-layout: home
 :!sectids:
 
 [.text-center.strong]
 == Introduction
-
-What are Solution Patterns?
+Most enterprises undertake app modernization of existing monolithic applications to microservices to enable cloud adoption and agility. This solution pattern takes a look at enhancing these Applications with Application Services, thereby realising greater business value.
 
 [.tiles.browse]
 == Browse modules
 
 [.tile]
-.xref:01-pattern.adoc[1. Enhancing Applications with Application Services]
+.xref:01-pattern.adoc[1. Solution Pattern: App Modernization]
 * xref:01-pattern.adoc#background[Background]
 * xref:01-pattern.adoc#challenges[Challenges and solutions]
 
