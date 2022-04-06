@@ -9,8 +9,8 @@ The architecture will need to support these paradigms
 * Preference for a managed cloud services for easy and rapid ramp up
 
 
-:sectnums:
-[#runtime-architecture]
+
+[#runtimearchitecture]
 == Runtime architecture
 
 [img-runtimearchitecture]
@@ -154,7 +154,7 @@ The Kafka streams application creates a number of other topics for data aggreati
 image::02/globex-02-kafdrop-aggreated.png[width=100%]
 
 
-
+[#deploymentarchitecture]
 == Deployment Architecture
 
 The various components of the application runs on various footprints.

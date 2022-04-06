@@ -4,6 +4,10 @@
 
 
 * xref:02-architecture.adoc[2. Architecture]
+** xref:02-architecture.adoc#runtimearchitecture[Runtime Architecture]
+** xref:02-architecture.adoc#technology[The Technology]
+** xref:02-architecture.adoc#deploymentarchitecture[Deployment Architecture]
+
 
 * xref:03-demo.adoc[3. Demo / Walkthrough]
 
