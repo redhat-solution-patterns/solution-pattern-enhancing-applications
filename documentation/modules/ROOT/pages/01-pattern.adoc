@@ -1,2 +1,51 @@
 = Solution Pattern: App Modernization
 
+[#background]
+== Background
+
+Globex is a fictitious retail company. The company recently started a digital transformation and cloud adoption journey. As part of this initiative, the development and devops teams have completed the modernization of the existing multi-tier monolithic retail e-commerce web application. The monolithic application was split in a couple of loosely-coupled microservices and the application was rehosted on OpenShift.
+
+image::globex-appmod.png[width=75%]
+
+The devops team also adopted GitOps practices for rapid and continuous deployment.
+
+The outcome of this application modernization effort is an increased velocity of application development and deployment, and an overall faster go to market for new functionalities.
+
+A schematic overview of the current state of the application after the first phase of the application modernization effort:
+
+image::globex-phase1-3.png[width=75%]
+
+* The application is split in microservices and runs on OpenShift. As such it inherits all the benefits of the de-facto enterprise Kubernetes distribution: horizontal scaling, automated rollout/rollback, bin-packing, self healing, service discovery, load balancing, etc.
+
+* Adoption of GitOps practices decreases Lead Time for Change, Mean Time to Recover and Change Failure Rate while increasing Deployment Frequency
+
+Taking advantage of this new momentum, the business comes up with new requirements for the e-commerce application:
+
+* Multi-channel approach: includes a mobile application in addition to the retail web-site. Globex does not have the necessary expertise in mobile development, so development will have to be outsourced.
+* The ability to track user activity on the website and the mobile application.
+* Highlight products which generates most customer interest as featured products.
+* Provide a personalized experience for users on the website and mobile application.
+
+[#challenges]
+== Challenges and solutions
+
+There are however a number of challenges with the new requirements:
+
+* Adding new channels remains difficult, with a high risk of tight coupling to the existing services, which would slow down development productivity and time to market.
+* The existing services need to be managed and secured to allow access for external partners and development teams. Governance remains a challenge.
+* Adoption of new technologies such as event streaming requires time and new skills, which are not readily available inside the company.
+
+In order to cope with these challenges, the development team decides for a new approach.
+
+*API First approach*: before tackling the development of new services, the API contract is formalized in a OpenAPI spec document. This API design phase is done collaboratively with all stakeholders.
+Once a first version of the OpenAPI spec document is ready, it is pushed and managed in a service registry, which acts a the system of truth.
+Mocks are created for the API.
+
+*Parallel Development* streams. The API first approach enables parallel development streams. UUI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
+In parallel, backend development teams can implement the APIs using modern cloud-native frameworks. They continuously test the implementation against the OpenAPI spec to ensure that th implementation does not beak the contract.
+
+*Manage and Secure the APIs*. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other party applications.
+
+Adoption of *Apache Kafka* as streaming platform to ingest and process user activity event streams.
+
+A preference for *managed cloud services* for an easy and rapid adoption of new middleware components like the API Management platform and Apache Kafka. This allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these components.

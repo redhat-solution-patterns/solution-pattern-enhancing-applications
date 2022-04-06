@@ -12,7 +12,8 @@ What are Solution Patterns?
 
 [.tile]
 .xref:01-pattern.adoc[1. Solution Pattern: App Modernization]
-* Chapter 1
+* xref:01-pattern.adoc#background[Background]
+* xref:01-pattern.adoc#challenges[Challenges and solutions]
 
 [.tile]
 .xref:02-architecture.adoc[2. Architecture]
