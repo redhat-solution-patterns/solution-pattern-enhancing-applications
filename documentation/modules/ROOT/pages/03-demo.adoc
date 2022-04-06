@@ -1,4 +1,73 @@
 = Demo / Walkthrough
 
+Here you find a recorded video of the solution pattern, as well as a walkthrough guide through the differents aspects of the solution pattern.
+
 [#demo]
+== Recorded demo
 video::3yULVMdqJ98[youtube, width=800, height=480]
+
+[#demowalkthrough]
+== Demo Walkthrough
+
+=== Prerequisites:
+
+* Access to an OpenShift environment, preferably with `cluster-admin` privileges.
+* `oc` OpenShift CLI
+* `helm` Helm CLI
+
+=== 1. API First approach
+
+==== 1.1 API Design with Apicurio Studio
+
+Apicurio Studio  is an environment which allows to collaboratively work on API specifications. It can be installed on OpenShift, but for this demo we use the link:https://studio-auth.apicur.io[free hosted version of Apicurio Studio].
+
+. In a browser window, navigate to link:https://studio-auth.apicur.io[].
+. Register as a new user, or log in in using your Github or Google account. +
+You are redirected to the dashboard page. From here you can create a new API. You can also import an existing API from e.g. GitHub.
+. On the dashboard page, select *Import API* from the *Create new API* drop-down box.
++
+image::03/apicurio-import-api.png[]
+. On the *Import API* page, set the *Import Type* to *Import From Source Control*. Enter `https://github.com/globex-recommendation/catalog-service-api/blob/main/openapi/openapi-spec.yml` in the *Url* text box. Click *Import API*.
+. You are redirected to the `Product Catalog API` front page. This the OpenAPI spec document which describes the API to the *Catalog Service* of the Globex retail application. +
+Click *Edit API* to open the API Editor.
++
+image::03/apicurio-edit-api.png[]
+. Navigate within the editor to inspect the different paths, data types and reusable responses that make up the API definition. You can switching between the graphical editor and the source code editor by selecting the *Design* ot the *Source* tab.
+
+[NOTE]
+====
+In a real-world scenario you would do the inverse: start with an empty API specification, and define the different elements of the spec document. You then export the spec in JSON or YAML format (by copying the contents from the source editor) to your local file system and push it to version control.
+====
+
+==== 1.2 API mocking with Microcks
+
+API mocking allows for parallel streams of development. Developer teams that need to build applications that consume the API don't need to wait until the implementation of the API is finished, but can develop against API mocks that return pre-canned responses.
+
+Microcks is a web-based tool which exposes mocks based on a variety of sources, including OpenAPI spec documents. Refer to the link:https://microcks.io[Microcks web site] for more information.
+
+Microcks needs to be installed on your OpenShift cluster. The easiest way to do this is through the Microcks operator which is available through OperatorHub. This requires cluster admin access. If you don't have cluster admin access, refer to the Microcks installation documentation for alternative installation methods. 
+
+. Clone the https://github.com/globex-recommendation/catalog-service-api repository to your workstation. This repo contains the Catalog Service OpenAPI spec in the `openapi` folder. 
+. On the OpenShift cluster, create the `microcks` namespace.
+. From the OperatorHub page in the OpenShift web console, install the Microcks operator in the `microcks` namespace (The operator does not support cluster-wide installation mode).
+. Deploy a `MicrocksInstall` Custom Resource. The Microcks project provides a minimal Custom Resource which is sufficient for this demo.
++
+[.console-input]
+[source,bash]
+----
+OPENSHIFT_DOMAIN=$(oc get ingresscontroller default -n openshift-ingress-operator --template='{{.status.domain}}')
+curl https://microcks.io/operator/minikube-minimal.yaml -s | sed "s/KUBE_APPS_URL/${OPENSHIFT_DOMAIN}/g" | oc apply -n microcks -f -
+----
+. Once the Microcks pods are running, the Microcks console can be reached at https://microcks.$OPENSHIFT_DOMAIN. Log in with `admin/microcks123`
++
+image::03/microcks-dashboard.png[]
+. Microcks provides several ways to import assets for mocking, including uploading an OpenAPI spec document. +
+On the dashboard, click the *Importers* button, and on the *Import Jobs* page, click *Upload*.
+. Browse to the `openapi-spec.yml` file in the `openapi` folder of the GitHub project you cloned before and click *Upload* to upload the document.
+. On the *APIs|Services* page, click on the *Product Catalog API* link to open the service page.
++
+image::03/microcks-service.png[]
+. Microcks automatically created a number of mocks based on the examples defined in the OpenAPI spec document for the different paths. Click on the path name to inspect the mocks. Every mock has a unique URL and a pre-determined response.
++
+image::03/microcks-mock.png[]
+
