@@ -36,7 +36,7 @@ Since Globex does not want to allow  direct access to these  backend API service
 == The technology
 
 === Apicurio
-As part of theAPI first approach, the first step is to design these APIs before actually implementing them. 
+As part of the API first approach, the first step is to design these APIs before actually implementing them. 
 Apicurio Studio  is an environment which allows one to collaboratively work on API specifications -  today this is not a managed service - but will be offered as a managed service in the near future.
 
 Even before the implementation starts, the various stakeholders come together to define the API specs. The API are defined for the existing catalogue service as well. 
