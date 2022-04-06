@@ -13,7 +13,7 @@ The outcome of this application modernization effort is an increased velocity of
 
 A schematic overview of the current state of the application after the first phase of the application modernization effort:
 
-image::globex-phase1-3.png[width=75%]
+image::globex-phase1.png[width=75%]
 
 * The application is split in microservices and runs on OpenShift. As such it inherits all the benefits of the de-facto enterprise Kubernetes distribution: horizontal scaling, automated rollout/rollback, bin-packing, self healing, service discovery, load balancing, etc.
 
