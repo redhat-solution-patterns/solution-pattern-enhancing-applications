@@ -1,5 +1,5 @@
-name: solution-pattern-app-modernization
-title: "Solution Pattern: App Modernization"
+name: solution-pattern-enhancing-applications
+title: "Solution Pattern: Enhancing Applications with Application Services"
 version: main
 nav:
   - modules/ROOT/nav.adoc

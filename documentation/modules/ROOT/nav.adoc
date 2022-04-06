@@ -1,4 +1,4 @@
-* xref:01-pattern.adoc[1. Solution Pattern: App Modernization]
+* xref:01-pattern.adoc[1. Solution Pattern: Enhancing Applications with Application Services]
 ** xref:01-pattern.adoc#background[Background]
 ** xref:01-pattern.adoc#challenges[Challenges and solutions]
 

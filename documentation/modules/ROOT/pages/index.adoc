@@ -1,4 +1,4 @@
-= Solution Pattern: App Modernization
+= Solution Pattern: Enhancing Applications with Application Services
 :page-layout: home
 :!sectids:
 
@@ -11,7 +11,7 @@ What are Solution Patterns?
 == Browse modules
 
 [.tile]
-.xref:01-pattern.adoc[1. Solution Pattern: App Modernization]
+.xref:01-pattern.adoc[1. Enhancing Applications with Application Services]
 * xref:01-pattern.adoc#background[Background]
 * xref:01-pattern.adoc#challenges[Challenges and solutions]
 
