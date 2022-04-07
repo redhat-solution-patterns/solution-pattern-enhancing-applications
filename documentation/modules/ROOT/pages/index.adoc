@@ -24,7 +24,8 @@ Most enterprises undertake app modernization of existing monolithic applications
 
 [.tile]
 .xref:03-demo.adoc[3. Demo / Walkthrough]
-* xref:03-demo.adoc#demo[Demo]
+* xref:03-demo.adoc#demo[Recorded Demo]
+* xref:03-demo.adoc#demowalktrough[Demo Walkthrough]
 
 [.tile]
 .xref:04-workshop.adoc[4. Workshop]

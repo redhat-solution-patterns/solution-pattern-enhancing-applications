@@ -2,13 +2,13 @@
 ** xref:01-pattern.adoc#background[Background]
 ** xref:01-pattern.adoc#challenges[Challenges and solutions]
 
-
 * xref:02-architecture.adoc[2. Architecture]
 ** xref:02-architecture.adoc#runtimearchitecture[Runtime Architecture]
 ** xref:02-architecture.adoc#technology[The Technology]
 ** xref:02-architecture.adoc#deploymentarchitecture[Deployment Architecture]
 
-
 * xref:03-demo.adoc[3. Demo / Walkthrough]
+** xref:03-demo.adoc#demo[Recorded Demo]
+** xref:03-demo.adoc#demowalktrough[Demo Walkthrough]
 
 * xref:04-workshop.adoc[4. Workshop]
