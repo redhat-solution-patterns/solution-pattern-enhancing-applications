@@ -188,3 +188,93 @@ The activity tracking functionality of the Globex retail web-site application us
 * *Topic name*: `globex-tracking`.
 * *Partitions*: `1`
 * *Message retention*: Keep the defaults.
+
+=== 3. Inner Development Loop
+
+The inner development loop is the single developer workflow, where a developer works on a piece of functionality or a bug fix in an application. The developer typically writes code on an IDE on his laptop, tests the code locally and debugs if necessary, all this in an iterative fashion. Once the piece of functionality is deemed ready, the developer pushes the changes into the source control system. That's where the outer loop kicks in. In the outer loop the code is built, integration tests are run, container images are built and deployed to the target container platform.
+
+One of the major challenges developers face in the inner loop, is the management of dependencies. Almost every application, monolithic or based on microservices, has one or more services it depends on, like a database or a messaging platform. In the case of microservices, a service can also depend on other services. So even when developing locally, those dependencies must somehow be  available to the developer.
+
+Several approaches are possible to tackle this problem: use Docker or Docker Compose to run the dependencies locally, or spin up a local Kubernetes cluster with Minikube or Kind and deploy the services in that local Kubernetes cluster. Or you can try to mock up all the dependent services. Some frameworks like Quarkus have taken it a step further and support the automatic provisioning of containerized services like a database or a Kafka cluster in development and test mode.
+
+An alternative is to deploy the dependencies on a remote OpenShift cluster, and develop locally while pointing the application under development to the dependent services running on OpenShift.
+
+Our example uses a Helm chart to easily deploy all the components of the Globex retail application to OpenShift. For the services that rely on Kafka, we'll use the managed Kafka instance we created earlier.
+
+. Clone the https://github.com/globex-recommendation/globex-recommendation-helm repository to your workstation. This repo contains helm charts for the different components of the Globex retail web application.
+. Create a file `values.yaml` in the root of the project. Set the content of the file to:
++
+[source,bash]
+----
+kafka:
+  bootstrapServer: &kafka-bootstrap <kafka bootstrap server>
+  userId: &kafka-user-id <service account user id>
+  password: &kafka-user-secret <service account user secret>
+
+recommendation-engine:
+  kafka:
+    bootstrapServer: *kafka-bootstrap
+    userId: *kafka-user-id
+    password: *kafka-user-secret
+
+activity-tracking:
+  kafka:
+    bootstrapServer: *kafka-bootstrap
+    userId: *kafka-user-id
+    password: *kafka-user-secret
+----
++
+Replace the `<kafka bootstrap server>` placeholder with the bootstrap address of the managed Kafka instance, and `<service account user id>` and `<service account user secret>` with the user ID and the user secret of the service account you created for the managed Kafka instance.
+. Create a namespace in OpenShift for the deployment:
++
+[.console-input]
+[source,bash]
+----
+oc create namespace globex-dev
+----
+. Deploy the application with Helm:
++
+[.console-input]
+[source,bash]
+----
+helm install --dependency-update -n globex-dev -f values.yaml globex globex
+----
+. Check the deployment progress on the Openshift console. Once all the pods are deployed, the topology in the Developer perspective of the `globex-dev` namespace should look like:
++
+image::03/globex-developer-perspective-topology.png[]
+
+Let's say that as a developer you need to work on the *Activity Tracking Service*. This service exposes a REST endpoint for posting user activity events. These events are sent to the `globex.tracking` Kafka topic.
+
+The developer workflow would look like:
+
+. Clone the https://github.com/globex-recommendation/activity-tracking-service repository to your workstation. This repository contains the code of the Activity Tracking Service and uses Quarkus.
+. Import the code in your favorite IDE
+. The Activity Tracking Service has a dependency on the Kafka broker. So the local copy of the application needs to be configured to point to the managed Kafka instance you created earlier. One way to do so is to add the connection details to the `dev` profile properties in `src/main/resources/application.properties`. + 
+An alternative is to create an `.env` file in the root of the project, which will be picked up when running the application in dev mode. The advantage is less risk of committing this file (which contains connection credentials) to source control.
+* Create a file called `.env` in the root of the project.
+* Set the contents of the file to:
++
+----
+mp.messaging.outgoing.tracking-event.bootstrap.servers=<kafka bootstrap server>
+mp.messaging.outgoing.tracking-event.topic=globex.tracking
+
+mp.messaging.connector.smallrye-kafka.security.protocol=SASL_SSL
+mp.messaging.connector.smallrye-kafka.sasl.mechanism=PLAIN
+
+mp.messaging.connector.smallrye-kafka.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required \
+  username="<service account user id>" \
+  password="<service account user secret>" ;
+----
++
+Replace the `<kafka bootstrap server>` placeholder with the bootstrap address of the managed Kafka instance, and `<service account user id>` and `<service account user secret>` with the user ID and the user secret of the service account you created for the managed Kafka instance.
+. From a terminal window, start the application in dev mode:
++
+[.console-input]
+[source,bash]
+----
+mvn quarkus:dev
+----
++
+image::03/quarkus-dev-mode.png[]
++
+Quarkus dev mode supports live-reload of the application code. So when you change the code, it is automatically reloaded when you do a HTTP call to the application - no need to continuously start and stop the application. Other benefits include opening a port for attaching a debugger, continuous testing and the Dev UI available at `/q/dev`.
