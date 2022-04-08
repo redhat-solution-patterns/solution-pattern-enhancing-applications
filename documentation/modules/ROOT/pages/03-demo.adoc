@@ -20,7 +20,7 @@ This section shows you how you can set up the different parts of the solution pa
 
 === 1. API First approach
 
-==== 1.1 API Design with Apicurio Studio
+*API Design with Apicurio Studio*
 
 Apicurio Studio  is an environment which allows to collaboratively work on API specifications. It can be installed on OpenShift, but for this demo we use the link:https://studio-auth.apicur.io[free hosted version of Apicurio Studio].
 
@@ -42,7 +42,7 @@ image::03/apicurio-edit-api.png[]
 In a real-world scenario you would do the inverse: start with an empty API specification, and define the different elements of the spec document. You then export the spec in JSON or YAML format (by copying the contents from the source editor) to your local file system and push it to version control.
 ====
 
-==== 1.2 API mocking with Microcks
+*API mocking with Microcks*
 
 API mocking allows for parallel streams of development. Developer teams that need to build applications that consume the API don't need to wait until the implementation of the API is finished, but can develop against API mocks that return pre-canned responses.
 
@@ -74,7 +74,7 @@ image::03/microcks-service.png[]
 +
 image::03/microcks-mock.png[]
 
-==== 1.3 Publishing and managing APIs with Service Registry
+*Publishing and managing APIs with Service Registry*
 
 Once a first version of the API specification is ready to be socialized, it can be published in a schema registry, from where other teams can search and find it.
 
