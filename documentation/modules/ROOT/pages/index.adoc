@@ -8,32 +8,9 @@
 
 Most enterprises undertake app modernization of existing monolithic applications to microservices to enable cloud adoption and agility. This solution pattern takes a look at enhancing these Applications with Application Services, thereby realising greater business value.
 
-[.tiles.browse]
+include::content-overview.adoc[]
 
 include::01-pattern.adoc[]
-
-[discrete]
-[#content_overview]
-== Browse modules
-
-[decimal]
-* xref:index.adoc[{counter:module}. Solution Pattern: Enhancing Applications with Application Services]
-** xref:index.adoc#use-cases[{module}.{counter:submodule1} Use cases]
-** xref:01-pattern.adoc#background[{module}.{counter:submodule1} The story behind this solution pattern]
-** xref:01-pattern#solution[{module}.{counter:submodule1} The solution]
-** xref:index.adoc#content_overview[{module}.{counter:submodule1} Content Overview]
-** xref:index.adoc#_explore_more_solution_patterns[{module}.{counter:submodule1} Explore more solution patterns]
-
-* xref:02-architecture.adoc[{counter:module}. Architecture]
-** xref:02-architecture.adoc#challenges[{module}.{counter:submodule2}. Common challenges]
-** xref:02-architecture.adoc#tech_stack[{module}.{counter:submodule2}. Technology stack]
-** xref:02-architecture.adoc#in_depth[{module}.{counter:submodule2}. An in-depth look at the solution's architecture]
-** xref:02-architecture.adoc#more_tech[{module}.{counter:submodule2}. More about the technology stack]
-
-* xref:03-demo.adoc[{counter:module}. See the Solution in Action]
-** xref:03-demo.adoc#demo[{module}.{counter:submodule3}. Demonstration]
-
-.xref:04-workshop.adoc[{counter:module}. Workshop]
 
 [discrete]
 == Explore more solution patterns

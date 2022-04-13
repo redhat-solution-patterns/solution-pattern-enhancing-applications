@@ -21,7 +21,7 @@ asciidoc:
 
 ui:
   bundle:
-    url: https://github.com/redhat-solution-patterns/course-ui/releases/download/v0.1.12-custom/ui-bundle.zip
+    url: https://github.com/redhat-solution-patterns/course-ui/releases/download/v0.1.13-custom/ui-bundle.zip
     snapshot: true
   supplemental_files:
     - path: ./supplemental-ui
