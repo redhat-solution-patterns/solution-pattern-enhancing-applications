@@ -1,3 +1,8 @@
+= Enhancing Applications with Application Services
+:sectnums:
+:sectlinks:
+:doctype: book
+
 = Architecture
 
 The architecture will need to support these paradigms
@@ -7,8 +12,6 @@ The architecture will need to support these paradigms
 * Managed API Management platform for securing and managing the backend services
 * Managed  Kafka to process user activity event streams
 * Preference for a managed cloud services for easy and rapid ramp up
-
-
 
 [#runtimearchitecture]
 == Runtime architecture

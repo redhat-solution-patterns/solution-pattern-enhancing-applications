@@ -1,4 +1,5 @@
-= Solution Pattern: Enhancing Applications with Application Services
+= Enhancing Applications with Application Services
+
 
 [#background]
 == Background

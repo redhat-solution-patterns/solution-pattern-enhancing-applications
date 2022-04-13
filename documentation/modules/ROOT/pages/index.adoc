@@ -1,32 +1,37 @@
-= Enhancing Applications with Application Services
-
+= Solution Pattern: Enhancing Applications with Application Services
 :page-layout: home
 :!sectids:
+:sectnums:
 
-[.text-center.strong]
-== Introduction
+[discrete]
+
 Most enterprises undertake app modernization of existing monolithic applications to microservices to enable cloud adoption and agility. This solution pattern takes a look at enhancing these Applications with Application Services, thereby realising greater business value.
 
 [.tiles.browse]
+[discrete]
 == Browse modules
 
 [.tile]
-.xref:01-pattern.adoc[1. Solution Pattern: Enhancing Applications with Application Services]
+.xref:01-pattern.adoc[{counter:module}. Solution Pattern: Enhancing Applications with Application Services]
 * xref:01-pattern.adoc#background[Background]
 * xref:01-pattern.adoc#challenges[Challenges and solutions]
 
 [.tile]
-.xref:02-architecture.adoc[2. Architecture]
+.xref:02-architecture.adoc[{counter:module}. Architecture]
 * xref:02-architecture.adoc#runtimearchitecture[Runtime Architecture]
 * xref:02-architecture.adoc#technology[The Technology]
 * xref:02-architecture.adoc#deploymentarchitecture[Deployment Architecture]
 
 
 [.tile]
-.xref:03-demo.adoc[3. Demo / Walkthrough]
+.xref:03-demo.adoc[{counter:module}. Demo / Walkthrough]
 * xref:03-demo.adoc#demo[Recorded Demo]
 * xref:03-demo.adoc#demowalktrough[Demo Walkthrough]
 
 [.tile]
-.xref:04-workshop.adoc[4. Workshop]
+.xref:04-workshop.adoc[{counter:module}. Workshop]
 * Chapter 1
+
+[discrete]
+== Explore more solution patterns
+include::https://raw.githubusercontent.com/redhat-solution-patterns/redhat-solution-patterns.github.io/master/documentation/modules/ROOT/pages/solution-pattern-list.adoc[]
