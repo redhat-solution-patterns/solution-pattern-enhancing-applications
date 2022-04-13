@@ -2,7 +2,7 @@ runtime:
   cache_dir: ./.cache/antora
 
 site:
-  title: "Solution Pattern: Enhancing Applications with Application Services"
+  title: "Solution Patterns for Cloud Native Applications"
   start_page: solution-pattern-enhancing-applications::index.adoc
 
 content:
