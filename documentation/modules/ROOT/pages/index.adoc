@@ -16,26 +16,24 @@ include::01-pattern.adoc[]
 [#content_overview]
 == Browse modules
 
-[.tile]
-.xref:01-pattern.adoc[{counter:module}. Solution Pattern: Enhancing Applications with Application Services]
-* xref:01-pattern.adoc#background[Background]
-* xref:01-pattern.adoc#challenges[Challenges and solutions]
+[decimal]
+* xref:index.adoc[{counter:module}. Solution Pattern: Enhancing Applications with Application Services]
+** xref:index.adoc#use-cases[{module}.{counter:submodule1} Use cases]
+** xref:01-pattern.adoc#background[{module}.{counter:submodule1} The story behind this solution pattern]
+** xref:01-pattern#solution[{module}.{counter:submodule1} The solution]
+** xref:index.adoc#content_overview[{module}.{counter:submodule1} Content Overview]
+** xref:index.adoc#_explore_more_solution_patterns[{module}.{counter:submodule1} Explore more solution patterns]
 
-[.tile]
-.xref:02-architecture.adoc[{counter:module}. Architecture]
-* xref:02-architecture.adoc#runtimearchitecture[Runtime Architecture]
-* xref:02-architecture.adoc#technology[The Technology]
-* xref:02-architecture.adoc#deploymentarchitecture[Deployment Architecture]
+* xref:02-architecture.adoc[{counter:module}. Architecture]
+** xref:02-architecture.adoc#challenges[{module}.{counter:submodule2}. Common challenges]
+** xref:02-architecture.adoc#tech_stack[{module}.{counter:submodule2}. Technology stack]
+** xref:02-architecture.adoc#in_depth[{module}.{counter:submodule2}. An in-depth look at the solution's architecture]
+** xref:02-architecture.adoc#more_tech[{module}.{counter:submodule2}. More about the technology stack]
 
+* xref:03-demo.adoc[{counter:module}. See the Solution in Action]
+** xref:03-demo.adoc#demo[{module}.{counter:submodule3}. Demonstration]
 
-[.tile]
-.xref:03-demo.adoc[{counter:module}. Demo / Walkthrough]
-* xref:03-demo.adoc#demo[Recorded Demo]
-* xref:03-demo.adoc#demowalktrough[Demo Walkthrough]
-
-[.tile]
 .xref:04-workshop.adoc[{counter:module}. Workshop]
-* Chapter 1
 
 [discrete]
 == Explore more solution patterns
