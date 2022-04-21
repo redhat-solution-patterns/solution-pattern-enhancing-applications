@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Enhancing Applications with Application Services :: Solution Patterns for Cloud Native Applications</title>
+    <link rel="prev" href="02-architecture.html">
+    <link rel="next" href="04-workshop.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://redhat.com" target="_blank"><img
+          src="../../_/img/logo.png" height="40px" alt="Cloud Native Architecture Solution Patterns"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../..">Solution Patterns for Cloud Native Applications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+       
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Solution Patterns</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Adopt Change Data Capture for <br/>stack modernization</a>
+            <a class="navbar-item" href="#">Edge-to-Cloud Pipelines</a>     <a class="navbar-item" href="#">Event driven architecture</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Other</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-gitops-patterns.io/">GitOps Solution Patterns</a>
+            <a class="navbar-item" href="https://hybrid-cloud-patterns.io/">Hybrid Cloud Solution Patterns</a>
+          </div>
+        </div>
+
+        <a class="navbar-item" target="_blank" href="https://www.redhat.com/en/products/middleware">Red Hat Application Services</a>
+
+        <a class="navbar-item" target="_blank" href="https://developers.redhat.com/middleware">Learn more</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="solution-pattern-enhancing-applications" data-version="main">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html" class=" query-params-link">Enhancing Applications with Application Services</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">1. Home page</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#use-cases">1.1 Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-pattern.html#background">1.2 The story behind this solution pattern</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-pattern.html#solution">1.3 The solution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#content_overview">1.4 Content Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#_explore_more_solution_patterns">1.5 Explore more solution patterns</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-architecture.html">2. Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#challenges">2.1. Common challenges</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#tech_stack">2.2. Technology stack</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#in_depth">2.3. An in-depth look at the solution&#8217;s architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#more_tech">2.4. More about the technology stack</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-demo.html">3. See the Solution in Action</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="#demo">3.1. Demonstration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="#demowalkthrough">3.2. Walkthrough guide</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="#_before_getting_started">3.3. Before getting started</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="#<em>step_by_step_guide</em>">3.4. Step by step guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="04-workshop.html">4. Workshop</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://redhat-solution-patterns.github.io/">5. Other Red Hat Solution Patterns</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enhancing Applications with Application Services</span>
+    <span class="version">main</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Enhancing Applications with Application Services</span>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="index.html">main</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enhancing Applications with Application Services</a></li>
+    <li><a href="03-demo.html">3. See the Solution in Action</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-solution-patterns/solution-pattern-enhancing-applications/edit/main/documentation/modules/ROOT/pages/03-demo.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Enhancing Applications with Application Services</h1>
+<h1 id="_see_the_solution_in_action" class="sect0"><a class="anchor" href="#_see_the_solution_in_action"></a><a class="link" href="#_see_the_solution_in_action">See the Solution in Action</a></h1>
+<div class="openblock partintro">
+<div class="content">
+Here you find a recorded video of the solution pattern, as well as a walkthrough guide through the different aspects of the solution pattern.
+</div>
+</div>
+<div class="sect1">
+<h2 id="demo"><a class="anchor" href="#demo"></a><a class="link" href="#demo">1. Recorded demo</a></h2>
+<div class="sectionbody">
+<div class="videoblock">
+<div class="content">
+<iframe width="800" height="480" src="https://www.youtube.com/embed/3yULVMdqJ98?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="demowalkthrough"><a class="anchor" href="#demowalkthrough"></a><a class="link" href="#demowalkthrough">2. Walkthrough guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section shows you how you can set up the different parts of the solution pattern, so that you can walk through the demo.</p>
+</div>
+<div class="sect2">
+<h3 id="_before_getting_started"><a class="anchor" href="#_before_getting_started"></a><a class="link" href="#_before_getting_started">2.1. Before getting started</a></h3>
+<div class="paragraph">
+<p>You will need the following pre-requisites:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Access to an OpenShift environment, preferably with <code>cluster-admin</code> privileges.</p>
+</li>
+<li>
+<p>A Red Hat account</p>
+</li>
+<li>
+<p><code>oc</code> OpenShift CLI</p>
+</li>
+<li>
+<p><code>helm</code> Helm CLI</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_step_by_step_guide"><a class="anchor" href="#_step_by_step_guide"></a><a class="link" href="#_step_by_step_guide">2.2. Step by step guide</a></h3>
+<div class="sect3">
+<h4 id="_api_first_approach"><a class="anchor" href="#_api_first_approach"></a><a class="link" href="#_api_first_approach">2.2.1. API First approach</a></h4>
+<div class="paragraph">
+<p><strong>API Design with Apicurio Studio</strong></p>
+</div>
+<div class="paragraph">
+<p>Apicurio Studio  is an environment which allows to collaboratively work on API specifications. It can be installed on OpenShift, but for this demo we use the <a href="https://studio-auth.apicur.io">free hosted version of Apicurio Studio</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a browser window, navigate to <a href="https://studio-auth.apicur.io" class="bare">https://studio-auth.apicur.io</a>.</p>
+</li>
+<li>
+<p>Register as a new user, or log in in using your Github or Google account.<br>
+You are redirected to the dashboard page. From here you can create a new API. You can also import an existing API from e.g. GitHub.</p>
+</li>
+<li>
+<p>On the dashboard page, select <strong>Import API</strong> from the <strong>Create new API</strong> drop-down box.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/apicurio-import-api.png" alt="apicurio import api">
+</div>
+</div>
+</li>
+<li>
+<p>On the <strong>Import API</strong> page, set the <strong>Import Type</strong> to <strong>Import From Source Control</strong>. Enter <code><a href="https://github.com/globex-recommendation/catalog-service-api/blob/main/openapi/openapi-spec.yml" class="bare">https://github.com/globex-recommendation/catalog-service-api/blob/main/openapi/openapi-spec.yml</a></code> in the <strong>Url</strong> text box. Click <strong>Import API</strong>.</p>
+</li>
+<li>
+<p>You are redirected to the <code>Product Catalog API</code> front page. This the OpenAPI spec document which describes the API to the <strong>Catalog Service</strong> of the Globex retail application.<br>
+Click <strong>Edit API</strong> to open the API Editor.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/apicurio-edit-api.png" alt="apicurio edit api">
+</div>
+</div>
+</li>
+<li>
+<p>Navigate within the editor to inspect the different paths, data types and reusable responses that make up the API definition. You can switching between the graphical editor and the source code editor by selecting the <strong>Design</strong> ot the <strong>Source</strong> tab.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>In a real-world scenario you would do the inverse: start with an empty API specification, and define the different elements of the spec document. You then export the spec in JSON or YAML format (by copying the contents from the source editor) to your local file system and push it to version control.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>API mocking with Microcks</strong></p>
+</div>
+<div class="paragraph">
+<p>API mocking allows for parallel streams of development. Developer teams that need to build applications that consume the API don&#8217;t need to wait until the implementation of the API is finished, but can develop against API mocks that return pre-canned responses.</p>
+</div>
+<div class="paragraph">
+<p>Microcks is a web-based tool which exposes mocks based on a variety of sources, including OpenAPI spec documents. Refer to the <a href="https://microcks.io">Microcks web site</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>Microcks needs to be installed on your OpenShift cluster. The easiest way to do this is through the Microcks operator which is available through OperatorHub. This requires cluster admin access. If you don&#8217;t have cluster admin access, refer to the Microcks installation documentation for alternative installation methods.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clone the <a href="https://github.com/globex-recommendation/catalog-service-api" class="bare">https://github.com/globex-recommendation/catalog-service-api</a> repository to your workstation. This repo contains the Catalog Service OpenAPI spec in the <code>openapi</code> folder.</p>
+</li>
+<li>
+<p>On the OpenShift cluster, create the <code>microcks</code> namespace.</p>
+</li>
+<li>
+<p>From the OperatorHub page in the OpenShift web console, install the Microcks operator in the <code>microcks</code> namespace (The operator does not support cluster-wide installation mode).</p>
+</li>
+<li>
+<p>Deploy a <code>MicrocksInstall</code> Custom Resource. The Microcks project provides a minimal Custom Resource which is sufficient for this demo.</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">OPENSHIFT_DOMAIN=$(oc get ingresscontroller default -n openshift-ingress-operator --template='{{.status.domain}}')
+curl https://microcks.io/operator/minikube-minimal.yaml -s | sed "s/KUBE_APPS_URL/${OPENSHIFT_DOMAIN}/g" | oc apply -n microcks -f -</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Once the Microcks pods are running, the Microcks console can be reached at <a href="https://microcks.$OPENSHIFT_DOMAIN" class="bare">https://microcks.$OPENSHIFT_DOMAIN</a>. Log in with <code>admin/microcks123</code></p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/microcks-dashboard.png" alt="microcks dashboard">
+</div>
+</div>
+</li>
+<li>
+<p>Microcks provides several ways to import assets for mocking, including uploading an OpenAPI spec document.<br>
+On the dashboard, click the <strong>Importers</strong> button, and on the <strong>Import Jobs</strong> page, click <strong>Upload</strong>.</p>
+</li>
+<li>
+<p>Browse to the <code>openapi-spec.yml</code> file in the <code>openapi</code> folder of the GitHub project you cloned before and click <strong>Upload</strong> to upload the document.</p>
+</li>
+<li>
+<p>On the <strong>APIs|Services</strong> page, click on the <strong>Product Catalog API</strong> link to open the service page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/microcks-service.png" alt="microcks service">
+</div>
+</div>
+</li>
+<li>
+<p>Microcks automatically created a number of mocks based on the examples defined in the OpenAPI spec document for the different paths. Click on the path name to inspect the mocks. Every mock has a unique URL and a pre-determined response.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/microcks-mock.png" alt="microcks mock">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Publishing and managing APIs with Service Registry</strong></p>
+</div>
+<div class="paragraph">
+<p>Once a first version of the API specification is ready to be socialized, it can be published in a schema registry, from where other teams can search and find it.</p>
+</div>
+<div class="paragraph">
+<p>OpenShift Service Registry is a managed cloud service which provides you with an instance of a schema registry, where you can store and manage different kind of schemas, including OpenAPI spec documents and Avro and Protobuf schemas.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The next steps will show you how to upload schema artifacts through the <a href="https://console.redhat.com">console.redhat.com</a> UI. In a more realistic scenario this would be done automatically using the Service Registry REST API as part of a CI/CD pipeline: every time a new version is pushed to source control, a CI/CD pipeline kicks in which publishes the new version in Service Registry.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to <a href="https://console.redhat.com">console.redhat.com</a> and log in with your Red Hat ID and credentials.</p>
+</li>
+<li>
+<p>On the <a href="https://console.redhat.com">console.redhat.com</a> landing page, select <strong>Application Services</strong> from the menu on the left.</p>
+</li>
+<li>
+<p>On the Application Services landing page, select <strong>Service Registry → Service Registry instances</strong>.</p>
+</li>
+<li>
+<p>On the Service Registry overview page, click the <strong>Create Service Registry instance</strong> button. Enter a unique name like <code>globex-service-registry</code> and click <strong>Create</strong> to start the creation process for your Service Registry instance.</p>
+</li>
+<li>
+<p>The new Service Registry instance is listed in the instances table. After a couple of seconds, your instance should be marked as ready.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/service-registry-instance.png" alt="service registry instance">
+</div>
+</div>
+</li>
+<li>
+<p>In the Service Registry instances page of the web console, select the Service Registry instance that you want to upload a schema to.</p>
+</li>
+<li>
+<p>Click <strong>Upload artifact</strong> and complete the form to define the schema details. To upload the Product Catalog API specification, browse to the <code>openapi-spec.yml</code> file in the <code>openapi</code> folder of the GitHub project you cloned before.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/service-registry-upload-artifact.png" alt="service registry upload artifact">
+</div>
+</div>
+</li>
+<li>
+<p>Once the artifact is uploaded, it can be retrieved from the <a href="https://console.redhat.com">console.redhat.com</a> UI ot through the Service Registry REST API. Validity and compatibility rules can be defined on a per-artifact or global level.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/service-registry-artifact.png" alt="service registry artifact">
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_managed_apache_kafka_cloud_service"><a class="anchor" href="#_2_managed_apache_kafka_cloud_service"></a><a class="link" href="#_2_managed_apache_kafka_cloud_service">2.3. 2. Managed Apache Kafka Cloud Service</a></h3>
+<div class="paragraph">
+<p>OpenShift Streams for Apache Kafka is a managed cloud service that enables you to add Kafka data-streaming functionality in your applications without having to install, configure, run, and maintain your own Kafka clusters.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The following paragraph will guide you through the setup of a managed Kafka instance through the <a href="https://console.redhat.com">console.redhat.com</a> UI.
+Red Hat also offers a CLI (<code>rhoas</code>) which allows to create and configure a managed Kafka instance though the command line.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to <a href="https://console.redhat.com">console.redhat.com</a> and log in with your Red Hat ID and credentials.</p>
+</li>
+<li>
+<p>On the <a href="https://console.redhat.com">console.redhat.com</a> landing page, select <strong>Application Services</strong> from the menu on the left.</p>
+</li>
+<li>
+<p>On the Application Services landing page, select <strong>Streams for Apache Kafka → Kafka Instances</strong>.</p>
+</li>
+<li>
+<p>On the Kafka Instances overview page, click the <strong>Create Kafka</strong> instance button. Enter a unique name and select the relevant <em>Cloud region</em> for your Kafka instance and click <strong>Create instance</strong>. This starts the provisioning process for your Kafka instance.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Your Red Hat account entitles you to one Kafka instance free of charge. This Kafka instance will stay available for 48 hrs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>When the instance <em>Status</em> is <em>Ready</em>, you can start using the Kafka instance.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Create a Service Account</strong></p>
+</div>
+<div class="paragraph">
+<p>To connect applications or services to a Streams for Apache Kafka instance, you need to create a service account.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the <strong>Kafka Instances</strong> overview page, select the <strong>Options</strong> icon (the three dots) for the Kafka instance you just created. Select <strong>View connection information</strong>.</p>
+</li>
+<li>
+<p>Copy the <strong>Bootstrap server</strong> endpoint to a secure location. You will need this when connecting to your Kafka instance.</p>
+</li>
+<li>
+<p>Click <strong>Create service account</strong> to set up the service account. Enter a unique service account name and an optional description, and click <strong>Create</strong>.</p>
+</li>
+<li>
+<p>Copy the generated <strong>Client ID</strong> and <strong>Client Secret</strong> to a secure location. These are the credentials that you&#8217;ll use to connect to this Kafka instance.</p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The generated credentials are displayed only one time, so ensure that you&#8217;ve successfully and securely saved the copied credentials before closing the credentials window.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>After saving the generated credentials, select the confirmation check box and close the Credentials window.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Set Permissions for a Service Account</strong></p>
+</div>
+<div class="paragraph">
+<p>After you creating a service account to connect to a Kafka instance, you must also set the appropriate level of access for that new account in the Access Control List (ACL) of the Kafka instance. Streams for Apache Kafka uses ACLs provided by Kafka that enable you to manage how other user accounts and service accounts are permitted to interact with the Kafka resources that you create.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>On the <strong>Kafka Instances</strong> page, click the name of the Kafka instance you previously created.</p>
+</li>
+<li>
+<p>Click the <strong>Access</strong> tab to view the current ACL for this instance.</p>
+</li>
+<li>
+<p>Click <strong>Manage access</strong>, use the <strong>Account</strong> drop-down menu to select the service account that you previously created, and click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Under <strong>Assign Permissions</strong>, use the drop-down menus to set the permissions shown in the following table for this service account. Click <strong>Add</strong> to add each new resource permission.</p>
+<div class="paragraph">
+<p>These permissions enable applications associated with the service account to create and delete topics in the instance, to produce and consume messages in any topic in the instance, and to use any consumer group and any producer.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. ACL permissions for a new service account</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Resource type</p></th>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Resource identifier and value</p></th>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Access type</p></th>
+<th class="tableblock halign-left valign-top"><p class="tableblock">Operation</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Topic</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Is</code> = <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Allow</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>All</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Consumer group</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Is</code> = <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Allow</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Read</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Transactional ID</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Is</code> = <code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Allow</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>All</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/rhosak-access-serviceaccount.png" alt="rhosak access serviceaccount">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Create a Kafka Topic in OpenShift Streams for Apache Kafka</strong></p>
+</div>
+<div class="paragraph">
+<p>The activity tracking functionality of the Globex retail web-site application uses a Kafka topic to store the events generated by the user activity on the web site. This topic needs to be created ahead of time.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>Kafka Instances</strong> page of the web console, click the name of the Kafka instance that you want to add a topic to.</p>
+</li>
+<li>
+<p>Select the <strong>Topics</strong> tab, click <strong>Create topic</strong>, and follow the guided steps to define the topic details. Click <strong>Next</strong> to complete each step and click <strong>Finish</strong> to complete the setup.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Topic name</strong>: <code>globex-tracking</code>.</p>
+</li>
+<li>
+<p><strong>Partitions</strong>: <code>1</code></p>
+</li>
+<li>
+<p><strong>Message retention</strong>: Keep the defaults.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="_3_inner_development_loop"><a class="anchor" href="#_3_inner_development_loop"></a><a class="link" href="#_3_inner_development_loop">2.3.1. 3. Inner Development Loop</a></h4>
+<div class="paragraph">
+<p>The inner development loop is the single developer workflow, where a developer works on a piece of functionality or a bug fix in an application. The developer typically writes code on an IDE on his laptop, tests the code locally and debugs if necessary, all this in an iterative fashion. Once the piece of functionality is deemed ready, the developer pushes the changes into the source control system. That&#8217;s where the outer loop kicks in. In the outer loop the code is built, integration tests are run, container images are built and deployed to the target container platform.</p>
+</div>
+<div class="paragraph">
+<p>One of the major challenges developers face in the inner loop, is the management of dependencies. Almost every application, monolithic or based on microservices, has one or more services it depends on, like a database or a messaging platform. In the case of microservices, a service can also depend on other services. So even when developing locally, those dependencies must somehow be  available to the developer.</p>
+</div>
+<div class="paragraph">
+<p>Several approaches are possible to tackle this problem: use Docker or Docker Compose to run the dependencies locally, or spin up a local Kubernetes cluster with Minikube or Kind and deploy the services in that local Kubernetes cluster. Or you can try to mock up all the dependent services. Some frameworks like Quarkus have taken it a step further and support the automatic provisioning of containerized services like a database or a Kafka cluster in development and test mode.</p>
+</div>
+<div class="paragraph">
+<p>An alternative is to deploy the dependencies on a remote OpenShift cluster, and develop locally while pointing the application under development to the dependent services running on OpenShift.</p>
+</div>
+<div class="paragraph">
+<p>Our example uses a Helm chart to easily deploy all the components of the Globex retail application to OpenShift. For the services that rely on Kafka, we&#8217;ll use the managed Kafka instance we created earlier.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clone the <a href="https://github.com/globex-recommendation/globex-recommendation-helm" class="bare">https://github.com/globex-recommendation/globex-recommendation-helm</a> repository to your workstation. This repo contains helm charts for the different components of the Globex retail web application.</p>
+</li>
+<li>
+<p>Create a file <code>values.yaml</code> in the root of the project. Set the content of the file to:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kafka:
+  bootstrapServer: &amp;kafka-bootstrap &lt;kafka bootstrap server&gt;
+  userId: &amp;kafka-user-id &lt;service account user id&gt;
+  password: &amp;kafka-user-secret &lt;service account user secret&gt;
+
+recommendation-engine:
+  kafka:
+    bootstrapServer: *kafka-bootstrap
+    userId: *kafka-user-id
+    password: *kafka-user-secret
+
+activity-tracking:
+  kafka:
+    bootstrapServer: *kafka-bootstrap
+    userId: *kafka-user-id
+    password: *kafka-user-secret</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace the <code>&lt;kafka bootstrap server&gt;</code> placeholder with the bootstrap address of the managed Kafka instance, and <code>&lt;service account user id&gt;</code> and <code>&lt;service account user secret&gt;</code> with the user ID and the user secret of the service account you created for the managed Kafka instance.</p>
+</div>
+</li>
+<li>
+<p>Create a namespace in OpenShift for the deployment:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create namespace globex-dev</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Deploy the application with Helm:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">helm install --dependency-update -n globex-dev -f values.yaml globex globex</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Check the deployment progress on the Openshift console. Once all the pods are deployed, the topology in the Developer perspective of the <code>globex-dev</code> namespace should look like:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/globex-developer-perspective-topology.png" alt="globex developer perspective topology">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say that as a developer you need to work on the <strong>Activity Tracking Service</strong>. This service exposes a REST endpoint for posting user activity events. These events are sent to the <code>globex.tracking</code> Kafka topic.</p>
+</div>
+<div class="paragraph">
+<p>The developer workflow would look like:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clone the <a href="https://github.com/globex-recommendation/activity-tracking-service" class="bare">https://github.com/globex-recommendation/activity-tracking-service</a> repository to your workstation. This repository contains the code of the Activity Tracking Service and uses Quarkus.</p>
+</li>
+<li>
+<p>Import the code in your favorite IDE</p>
+</li>
+<li>
+<p>The Activity Tracking Service has a dependency on the Kafka broker. So the local copy of the application needs to be configured to point to the managed Kafka instance you created earlier. One way to do so is to add the connection details to the <code>dev</code> profile properties in <code>src/main/resources/application.properties</code>.<br>
+An alternative is to create an <code>.env</code> file in the root of the project, which will be picked up when running the application in dev mode. The advantage is less risk of committing this file (which contains connection credentials) to source control.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a file called <code>.env</code> in the root of the project.</p>
+</li>
+<li>
+<p>Set the contents of the file to:</p>
+<div class="listingblock">
+<div class="content">
+<pre>mp.messaging.outgoing.tracking-event.bootstrap.servers=&lt;kafka bootstrap server&gt;
+mp.messaging.outgoing.tracking-event.topic=globex.tracking
+
+mp.messaging.connector.smallrye-kafka.security.protocol=SASL_SSL
+mp.messaging.connector.smallrye-kafka.sasl.mechanism=PLAIN
+
+mp.messaging.connector.smallrye-kafka.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required \
+  username="&lt;service account user id&gt;" \
+  password="&lt;service account user secret&gt;" ;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace the <code>&lt;kafka bootstrap server&gt;</code> placeholder with the bootstrap address of the managed Kafka instance, and <code>&lt;service account user id&gt;</code> and <code>&lt;service account user secret&gt;</code> with the user ID and the user secret of the service account you created for the managed Kafka instance.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>From a terminal window, start the application in dev mode:</p>
+<div class="listingblock console-input">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn quarkus:dev</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/quarkus-dev-mode.png" alt="quarkus dev mode">
+</div>
+</div>
+<div class="paragraph">
+<p>Quarkus dev mode supports live-reload of the application code. So when you change the code, it is automatically reloaded when you do a HTTP call to the application - no need to continuously start and stop the application. Other benefits include opening a port for attaching a debugger, continuous testing and the Dev UI available at <code>/q/dev</code>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="02-architecture.html" class="query-params-link">2. Architecture</a></span>
+  <span class="next"><a href="04-workshop.html" class="query-params-link">4. Workshop</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img
+          src="../../_/img/app-services-logo.png" height="40px" alt="Cloud Native Architecture Solution Patterns"  href="https://redhat.com" ></a>
+</footer><script src="../../_/js/vendor/clipboard.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

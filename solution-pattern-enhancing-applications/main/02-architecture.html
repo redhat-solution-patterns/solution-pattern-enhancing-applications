@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Enhancing Applications with Application Services :: Solution Patterns for Cloud Native Applications</title>
+    <link rel="prev" href="index.html#content_overview">
+    <link rel="next" href="03-demo.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://redhat.com" target="_blank"><img
+          src="../../_/img/logo.png" height="40px" alt="Cloud Native Architecture Solution Patterns"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../..">Solution Patterns for Cloud Native Applications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+       
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Solution Patterns</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Adopt Change Data Capture for <br/>stack modernization</a>
+            <a class="navbar-item" href="#">Edge-to-Cloud Pipelines</a>     <a class="navbar-item" href="#">Event driven architecture</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Other</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-gitops-patterns.io/">GitOps Solution Patterns</a>
+            <a class="navbar-item" href="https://hybrid-cloud-patterns.io/">Hybrid Cloud Solution Patterns</a>
+          </div>
+        </div>
+
+        <a class="navbar-item" target="_blank" href="https://www.redhat.com/en/products/middleware">Red Hat Application Services</a>
+
+        <a class="navbar-item" target="_blank" href="https://developers.redhat.com/middleware">Learn more</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="solution-pattern-enhancing-applications" data-version="main">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html" class=" query-params-link">Enhancing Applications with Application Services</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">1. Home page</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#use-cases">1.1 Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-pattern.html#background">1.2 The story behind this solution pattern</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-pattern.html#solution">1.3 The solution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#content_overview">1.4 Content Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#_explore_more_solution_patterns">1.5 Explore more solution patterns</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-architecture.html">2. Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#challenges">2.1. Common challenges</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#tech_stack">2.2. Technology stack</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#in_depth">2.3. An in-depth look at the solution&#8217;s architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="#more_tech">2.4. More about the technology stack</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-demo.html">3. See the Solution in Action</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-demo.html#demo">3.1. Demonstration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-demo.html#demowalkthrough">3.2. Walkthrough guide</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-demo.html#_before_getting_started">3.3. Before getting started</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-demo.html#<em>step_by_step_guide</em>">3.4. Step by step guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="04-workshop.html">4. Workshop</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://redhat-solution-patterns.github.io/">5. Other Red Hat Solution Patterns</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enhancing Applications with Application Services</span>
+    <span class="version">main</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Enhancing Applications with Application Services</span>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="index.html">main</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enhancing Applications with Application Services</a></li>
+    <li><a href="02-architecture.html">2. Architecture</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-solution-patterns/solution-pattern-enhancing-applications/edit/main/documentation/modules/ROOT/pages/02-architecture.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Enhancing Applications with Application Services</h1>
+<h1 id="_architecture" class="sect0"><a class="anchor" href="#_architecture"></a><a class="link" href="#_architecture">Architecture</a></h1>
+<div class="openblock partintro">
+<div class="content">
+<div class="paragraph">
+<p>The architecture will need to support these paradigms</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>API First Approach resulting in OpenAPI specifications</p>
+</li>
+<li>
+<p>Enable Parallel development streams</p>
+</li>
+<li>
+<p>Managed API Management platform for securing and managing the backend services</p>
+</li>
+<li>
+<p>Managed  Kafka to process user activity event streams</p>
+</li>
+<li>
+<p>Preference for a managed cloud services for easy and rapid ramp up</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="challenges"><a class="anchor" href="#challenges"></a><a class="link" href="#challenges">1. Common challenges</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are however a number of challenges with the new requirements:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Adding new channels remains difficult, with a high risk of tight coupling to the existing services, which would slow down development productivity and time to market.</p>
+</li>
+<li>
+<p>The existing services need to be managed and secured to allow access for external partners and development teams. Governance remains a challenge.</p>
+</li>
+<li>
+<p>Adoption of new technologies such as event streaming requires time and new skills, which are not readily available inside the company.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In order to cope with these challenges, the development team decides for a new approach.</p>
+</div>
+<div class="paragraph">
+<p><strong>API First approach</strong>: before tackling the development of new services, the API contract is formalized in a OpenAPI spec document. This API design phase is done collaboratively with all stakeholders.
+Once a first version of the OpenAPI spec document is ready, it is pushed and managed in a service registry, which acts a the system of truth.
+Mocks are created for the API.</p>
+</div>
+<div class="paragraph">
+<p><strong>Parallel Development</strong> streams. The API first approach enables parallel development streams. UUI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
+In parallel, backend development teams can implement the APIs using modern cloud-native frameworks. They continuously test the implementation against the OpenAPI spec to ensure that the implementation does not break the contract.</p>
+</div>
+<div class="paragraph">
+<p><strong>Manage and Secure the APIs</strong>. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other party applications.</p>
+</div>
+<div class="paragraph">
+<p>Adoption of <strong>Apache Kafka</strong> as a streaming platform to ingest and process user activity event streams.</p>
+</div>
+<div class="paragraph">
+<p>A preference for <strong>managed cloud services</strong> for an easy and rapid adoption of new middleware components like the API Management platform and Apache Kafka. This allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these components.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tech_stack"><a class="anchor" href="#tech_stack"></a><a class="link" href="#tech_stack">2. Technology Stack</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TODO</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="in_depth"><a class="anchor" href="#in_depth"></a><a class="link" href="#in_depth">3. An in-depth look at the solution&#8217;s architecture</a></h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-runtimearchitecture.png" alt="img-runtimearchitecture" width="105%">
+</div>
+<div class="title">Figure 1. Globex Runtime Architecture</div>
+</div>
+<div class="paragraph">
+<p>Visitors engage with the retail website in a number of ways</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>view list of products</p>
+</li>
+<li>
+<p>search for products</p>
+</li>
+<li>
+<p>like/favourite a product
+view product details</p>
+</li>
+<li>
+<p>add to cart</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each of these activities generate a stream of events which are captured by  the <strong>user-activity-tracker</strong> service. This service then pushes the events into the  Kafka streaming platform.
+The events  can then be consumed by other services such as the <strong>product-recommendation-engine</strong> which will power the list of  featured products.
+A new <strong>Featured Products</strong> section is created to showcase the top 10 recommended products as recommended</p>
+</div>
+<div class="paragraph">
+<p>Since Globex does not want to allow  direct access to these  backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="more_tech"><a class="anchor" href="#more_tech"></a><a class="link" href="#more_tech">4. More about the technology stack</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_apicurio"><a class="anchor" href="#_apicurio"></a><a class="link" href="#_apicurio">4.1. Apicurio</a></h3>
+<div class="paragraph">
+<p>As part of the API first approach, the first step is to design these APIs before actually implementing them.
+Apicurio Studio  is an environment which allows one to collaboratively work on API specifications -  today this is not a managed service - but will be offered as a managed service in the near future.</p>
+</div>
+<div class="paragraph">
+<p>Even before the implementation starts, the various stakeholders come together to define the API specs. The API are defined for the existing catalogue service as well.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-apicurio-landing.png" alt="img-apicurio-landing" width="100%">
+</div>
+<div class="title">Figure 2. Apicurio studio landing page</div>
+</div>
+<div class="paragraph">
+<p>This designer provides a graphical way of designing all the aspects of an OpenAPI - had different paths, datatypes and canned responses. For instance - &lt;show example here&gt;
+Which can then be later used to mock out those services.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-apicurio.png" alt="img-apicurio" width="100%">
+</div>
+<div class="title">Figure 3. Apicurio studio API designer</div>
+</div>
+<div class="paragraph">
+<p>It also allows you to work in both a graphical way of doing things and also with the source. The OpenAPI can be viewed as both a YAML and a JSON document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="service-registry"><a class="anchor" href="#service-registry"></a><a class="link" href="#service-registry">4.2. Service Registry</a></h3>
+<div class="paragraph">
+<p>Once the API design is complete, and we have the first version of the API, this can now be published  in a schema registry.
+Red Hat  OpenShift Service Registry allows us to publish the OpenAPIs, makes it accessible, and manages the OpenAPI from within the Red Hat’s cloud console</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-serviceregistry.png" alt="img-runtimearchitecture" width="100%">
+</div>
+<div class="title">Figure 4. Red Hat OpenShift Service Registry</div>
+</div>
+<div class="paragraph">
+<p>You can upload new artifacts, new versions,  view the metadata, download the specs, view documentation and view the content as well.
+Through Content rules one can validate new versions of the APIs against the existing specs to ensure validity and backward compatibility.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Microcks"><a class="anchor" href="#Microcks"></a><a class="link" href="#Microcks">4.3. Microcks</a></h3>
+<div class="paragraph">
+<p>We can also build mocks for the APIs using the same OpenAPIs.</p>
+</div>
+<div class="paragraph">
+<p>Microcks is a tool which allows one to upload the same OpenAPI spec, and to build mocks for the APIs. This is for use of the teams who will actually consume the APIs and they can use these mocks to develop their pieces of code even before the APIs are completely implemented</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-microcks.png" alt="img-microcks" width="100%">
+</div>
+<div class="title">Figure 5. Microcks</div>
+</div>
+<div class="paragraph">
+<p>Each of the mocks that are created out of the OpenAPI&#8217;s examples   has its own URL which can be invoked to provide a realistic response. This allows front end and mobile app developers to develop against the OpenAPIs specs without waiting for the final implementation of the backend services.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rhoam"><a class="anchor" href="#rhoam"></a><a class="link" href="#rhoam">4.4. Red Hat OpenShift API Management</a></h3>
+<div class="paragraph">
+<p>We use the managed <strong>Red Hat OpenShift API Management</strong> platform here to publish, manage and secure the backend APIs.</p>
+</div>
+<div class="paragraph">
+<p>Each API can be configured to be secured using a number of ways. In this case, the APIs  are secured with an API key which should be passed through http request header. The OpenShift API Management platform allows you to have various application plans. Developers can subscribe to those APIs and can access APIs through an assigned API key  securely.  You can monitor the APIs and also track usage</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-rhoam.png" alt="img-rhoam" width="100%">
+</div>
+<div class="title">Figure 6. Red Hat OpenShift API Management</div>
+</div>
+<div class="paragraph">
+<p>As a developer, you would like to build functionality around the APIs. There is also a Development Portal  which is currently under, well, development. You can sign in as a developer here.  This developer  has already subscribed to the API and is given an API key which should be used in all API calls to ensure the calls are authenticated by the API management platform.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-dev-portal.png" alt="img-rhoam-dev-portal" width="100%">
+</div>
+<div class="title">Figure 7. Red Hat OpenShift API Management Dev Portal</div>
+</div>
+<div class="paragraph">
+<p>The devportal allows viewing Live documentation as well, which is another view of the OpenAPI specs. Developers can try it out  to see what kind of responses they can get back. The developers can also view statistics for their account  in a graph format</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-rhoam-devportal-statistics.png" alt="img-rhoam-dev-portal-statistics" width="100%">
+</div>
+<div class="title">Figure 8. Red Hat OpenShift API Management Dev Portal statistics</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kafka"><a class="anchor" href="#_kafka"></a><a class="link" href="#_kafka">4.5. Kafka</a></h3>
+<div class="paragraph">
+<p>Red Hat OpenShift Streams for Apache Kafka  is a fully hosted and managed Kafka cloud service. This serves the requirement of Globex who did not want to install and maintain a streaming platform. This service can be very easily consumed and used by developers.</p>
+</div>
+<div class="paragraph">
+<p>There are a number of topics created for Globex.  The globex.tracking topic is one which ingests the activity events. This is then consumed by the Recommendation Engine which is a Kafka Streams application which then builds a list of Top 10 most popular products with most user interest.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-kafka-topics.png" alt="img-kafka-topics" width="100%">
+</div>
+<div class="title">Figure 9. Red Hat OpenShift Streams for Apache Kafka</div>
+</div>
+<div class="paragraph">
+<p>This is a managed service and security is very important. The service allows fine grained access	controls based on user accounts and service accounts. You can define what each account is allowed to do.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-kafka-access.png" alt="img-kafka-topics" width="100%">
+</div>
+<div class="title">Figure 10. Red Hat OpenShift Streams for Apache Kafka - Access Control</div>
+</div>
+<div class="paragraph">
+<p>With all this tooling in place as part of App modernization, GitOps,  Continuous integration, deployment in staging. This means that Business can easily follow progress at different points of building the functionality which you can see here</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_globex_retail_application"><a class="anchor" href="#_globex_retail_application"></a><a class="link" href="#_globex_retail_application">4.6. Globex retail application</a></h3>
+<div class="paragraph">
+<p>The new homepage of the Coolstuff store displays  the top currently  featured products.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-ui-landing.png" alt="img-globex-02-ui-landing" width="100%">
+</div>
+<div class="title">Figure 11. Globex App Home Page</div>
+</div>
+<div class="paragraph">
+<p>The featured projects are displayed as a carousel in the page displaying the paginated list of products. Visitors can  drill down to view product details, add products to the cart, view and edit catt, and also <em>like</em> their favourite products</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-ui-pagination.png" alt="img-globex-02-ui-pagination" width="100%">
+</div>
+<div class="title">Figure 12. Globex - Paginated products list with Featured products carousel</div>
+</div>
+<div class="paragraph">
+<p>Each of the activities generates a continuous stream of events which is then used to recommend the top 10 products to be featured.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_kafdrop"><a class="anchor" href="#_kafdrop"></a><a class="link" href="#_kafdrop">4.7. Kafdrop</a></h3>
+<div class="paragraph">
+<p>&lt;generate more records now&gt;
+Kafdrop is a tool through which you can view this continuous stream of events. Kafdrop will point to the managed instance. We can view the topics and messaged easily as part of the development process</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-kafdrop.png" alt="img-globex-02-kafdrop" width="100%">
+</div>
+<div class="title">Figure 13. Kafdrop</div>
+</div>
+<div class="paragraph">
+<p>The Kafka streams application creates a number of other topics for data aggregation, and pushes the aggregated products list as events into the product-score-aggreated topic</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-kafdrop-aggreated.png" alt="img-globex-02-kafdrop-aggreated" width="100%">
+</div>
+<div class="title">Figure 14. Kafdrop - Aggregated topic with featured products</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deploymentarchitecture"><a class="anchor" href="#deploymentarchitecture"></a><a class="link" href="#deploymentarchitecture">5. Deployment Architecture</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The various components of the application run on various footprints.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Apicurio is a free hosted developer tool accessed through <a href="https://studio.apicur.io/" class="bare">https://studio.apicur.io/</a></p>
+</li>
+<li>
+<p>The various backend services are deployed as containers on Red Hat OpenShift Container Platform running on a public cloud. Microcks and Kafdrop tools are also deployed on OpenShift Container Platform. The UI itself is an Angular app which runs on NodeJS and deployed on the same  OpenShift platform.</p>
+</li>
+<li>
+<p>Managed Red Hat OpenShift Streams for Apache Kafka and Red Hat OpenShift Service Registry are deployed and accessed as fully managed services somewhere in the cloud and accessed through Red Hat Console</p>
+</li>
+<li>
+<p>Red Hat OpenShift API Management is running on OpenShift Dedicated deployed on allows</p>
+</li>
+<li>
+<p>The <a href="https://quay.io/" class="bare">https://quay.io/</a> is a hosted containers repository which stores the container images for the backend and UI application.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/02/globex-02-deployment-architecture.png" alt="img-globex-02-deployment-architecture" width="100%">
+</div>
+<div class="title">Figure 15. Kafdrop - Deployment Architecture</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="index.html#content_overview" class="query-params-link">1.4 Content Overview</a></span>
+  <span class="next"><a href="03-demo.html" class="query-params-link">3. See the Solution in Action</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img
+          src="../../_/img/app-services-logo.png" height="40px" alt="Cloud Native Architecture Solution Patterns"  href="https://redhat.com" ></a>
+</footer><script src="../../_/js/vendor/clipboard.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

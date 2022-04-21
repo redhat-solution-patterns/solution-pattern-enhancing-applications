@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Enhancing Applications with Application Services :: Solution Patterns for Cloud Native Applications</title>
+    <link rel="prev" href="03-demo.html">
+    <meta name="generator" content="Antora 3.0.0">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://redhat.com" target="_blank"><img
+          src="../../_/img/logo.png" height="40px" alt="Cloud Native Architecture Solution Patterns"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../..">Solution Patterns for Cloud Native Applications</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+
+       
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Solution Patterns</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Adopt Change Data Capture for <br/>stack modernization</a>
+            <a class="navbar-item" href="#">Edge-to-Cloud Pipelines</a>     <a class="navbar-item" href="#">Event driven architecture</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Other</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://redhat-gitops-patterns.io/">GitOps Solution Patterns</a>
+            <a class="navbar-item" href="https://hybrid-cloud-patterns.io/">Hybrid Cloud Solution Patterns</a>
+          </div>
+        </div>
+
+        <a class="navbar-item" target="_blank" href="https://www.redhat.com/en/products/middleware">Red Hat Application Services</a>
+
+        <a class="navbar-item" target="_blank" href="https://developers.redhat.com/middleware">Learn more</a>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="solution-pattern-enhancing-applications" data-version="main">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html" class=" query-params-link">Enhancing Applications with Application Services</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">1. Home page</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#use-cases">1.1 Use cases</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-pattern.html#background">1.2 The story behind this solution pattern</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="01-pattern.html#solution">1.3 The solution</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#content_overview">1.4 Content Overview</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html#_explore_more_solution_patterns">1.5 Explore more solution patterns</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="02-architecture.html">2. Architecture</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#challenges">2.1. Common challenges</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#tech_stack">2.2. Technology stack</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#in_depth">2.3. An in-depth look at the solution&#8217;s architecture</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="02-architecture.html#more_tech">2.4. More about the technology stack</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-demo.html">3. See the Solution in Action</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="03-demo.html#demo">3.1. Demonstration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-demo.html#demowalkthrough">3.2. Walkthrough guide</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-demo.html#_before_getting_started">3.3. Before getting started</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="03-demo.html#<em>step_by_step_guide</em>">3.4. Step by step guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="04-workshop.html">4. Workshop</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="https://redhat-solution-patterns.github.io/">5. Other Red Hat Solution Patterns</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Enhancing Applications with Application Services</span>
+    <span class="version">main</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Enhancing Applications with Application Services</span>
+      <ul class="versions">
+        <li class="version is-current">
+          <a href="index.html">main</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Enhancing Applications with Application Services</a></li>
+    <li><a href="04-workshop.html">4. Workshop</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/redhat-solution-patterns/solution-pattern-enhancing-applications/edit/main/documentation/modules/ROOT/pages/04-workshop.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Enhancing Applications with Application Services</h1>
+<h1 id="_workshop" class="sect0"><a class="anchor" href="#_workshop"></a><a class="link" href="#_workshop">Workshop</a></h1>
+
+<nav class="pagination">
+  <span class="prev"><a href="03-demo.html" class="query-params-link">3. See the Solution in Action</a></span>
+</nav>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img
+          src="../../_/img/app-services-logo.png" height="40px" alt="Cloud Native Architecture Solution Patterns"  href="https://redhat.com" ></a>
+</footer><script src="../../_/js/vendor/clipboard.js"></script>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
