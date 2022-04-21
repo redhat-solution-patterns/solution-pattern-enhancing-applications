@@ -1,2 +1,7 @@
+= Enhancing Applications with Application Services
+:sectnums:
+:sectlinks:
+:doctype: book
+
 = Workshop
 

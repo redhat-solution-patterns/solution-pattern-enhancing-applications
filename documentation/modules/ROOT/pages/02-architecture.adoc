@@ -1,3 +1,8 @@
+= Enhancing Applications with Application Services
+:sectnums:
+:sectlinks:
+:doctype: book
+
 = Architecture
 
 The architecture will need to support these paradigms
@@ -8,10 +13,37 @@ The architecture will need to support these paradigms
 * Managed  Kafka to process user activity event streams
 * Preference for a managed cloud services for easy and rapid ramp up
 
+[#challenges]
+== Common challenges
 
+There are however a number of challenges with the new requirements:
 
-[#runtimearchitecture]
-== Runtime architecture
+* Adding new channels remains difficult, with a high risk of tight coupling to the existing services, which would slow down development productivity and time to market.
+* The existing services need to be managed and secured to allow access for external partners and development teams. Governance remains a challenge.
+* Adoption of new technologies such as event streaming requires time and new skills, which are not readily available inside the company.
+
+In order to cope with these challenges, the development team decides for a new approach.
+
+*API First approach*: before tackling the development of new services, the API contract is formalized in a OpenAPI spec document. This API design phase is done collaboratively with all stakeholders.
+Once a first version of the OpenAPI spec document is ready, it is pushed and managed in a service registry, which acts a the system of truth.
+Mocks are created for the API.
+
+*Parallel Development* streams. The API first approach enables parallel development streams. UUI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
+In parallel, backend development teams can implement the APIs using modern cloud-native frameworks. They continuously test the implementation against the OpenAPI spec to ensure that the implementation does not break the contract.
+
+*Manage and Secure the APIs*. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other party applications.
+
+Adoption of *Apache Kafka* as a streaming platform to ingest and process user activity event streams.
+
+A preference for *managed cloud services* for an easy and rapid adoption of new middleware components like the API Management platform and Apache Kafka. This allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these components.
+
+[#tech_stack]
+== Technology Stack
+
+TODO
+
+[#in_depth]
+== An in-depth look at the solution's architecture
 
 [img-runtimearchitecture]
 .Globex Runtime Architecture 
@@ -32,8 +64,8 @@ A new *Featured Products* section is created to showcase the top 10 recommended 
 Since Globex does not want to allow  direct access to these  backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform
 
 
-[#technology]
-== The technology
+[#more_tech]
+== More about the technology stack
 
 === Apicurio
 As part of the API first approach, the first step is to design these APIs before actually implementing them. 
