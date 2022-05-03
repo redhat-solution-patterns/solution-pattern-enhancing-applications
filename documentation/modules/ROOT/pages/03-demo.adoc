@@ -109,7 +109,7 @@ image::03/service-registry-upload-artifact.png[]
 +
 image::03/service-registry-artifact.png[]
 
-=== 2. Managed Apache Kafka Cloud Service
+==== Managed Apache Kafka Cloud Service
 
 OpenShift Streams for Apache Kafka is a managed cloud service that enables you to add Kafka data-streaming functionality in your applications without having to install, configure, run, and maintain your own Kafka clusters.
 
@@ -198,7 +198,7 @@ The activity tracking functionality of the Globex retail web-site application us
 * *Partitions*: `1`
 * *Message retention*: Keep the defaults.
 
-==== 3. Inner Development Loop
+==== Inner Development Loop
 
 The inner development loop is the single developer workflow, where a developer works on a piece of functionality or a bug fix in an application. The developer typically writes code on an IDE on his laptop, tests the code locally and debugs if necessary, all this in an iterative fashion. Once the piece of functionality is deemed ready, the developer pushes the changes into the source control system. That's where the outer loop kicks in. In the outer loop the code is built, integration tests are run, container images are built and deployed to the target container platform.
 
