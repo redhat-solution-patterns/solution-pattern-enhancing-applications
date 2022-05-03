@@ -1,13 +1,16 @@
 [#use-cases]
 == Use cases
-. a 
-. b 
-. c
+
+Use cases that can be addressed with this solution pattern:
+
+* An application has been modernized from monolith to microservices and from virtual/bare-metal deployment to a a container based application platform. New functionality needs to be added to this existing application to fulfill business needs. The new functionality should be designed and developed as small and targeted microservices.
+* New channels need to be added to the existing, web-based application, e.g. a mobile app. This requires formalizing the application API and exposing the APIs through a API Management solution for consumption by the mobile app.
+* Real-time data gathering and analysis. User activity in the application is gathered and transformed into a stream of activity events. These events are processed and analyzed in real-time.
 
 [#background]
 == The story behind this solution pattern
 
-Globex is a fictitious retail company. The company recently started a digital transformation and cloud adoption journey. As part of this initiative, the development and devops teams have completed the modernization of the existing multi-tier monolithic retail e-commerce web application. The monolithic application was split in a couple of loosely-coupled microservices and the application was rehosted on OpenShift.
+Globex is a fictitious retail company. The company recently started a digital transformation and cloud adoption journey. As part of this initiative, the development and devops teams have completed the modernization of the existing multi-tier monolithic retail e-commerce web application. The monolithic application was split in a couple of loosely-coupled microservices and the application was re-hosted on OpenShift.
 
 image::globex-appmod.png[width=75%]
 
@@ -32,5 +35,13 @@ Taking advantage of this new momentum, the business comes up with new requiremen
 
 [#solution]
 == The solution
+
+This solution pattern focuses on:
+
+* The introduction of a streaming platform (Apache Kafka) to generate a stream of user activity events from the application web UI. User activity events are sent to a new service using a REST API. This service forwrds the events into the streaming platform. +
+The stream of user activity events is processed in real-time using a stream processing library to generate a list of featured products that can be highlighted on the web site.
+* The introduction of an API Management solution (Red Hat OpenShift API management) to expose, secure and manage the APIs to the application backend services. This allows to introduce new channels (mobile application, B2B transactions) in a controlled way. +
+Using a contract-first approach, the APIs are specified in a OpenAPI spec document and managed in a registry (Red Hat Openshift Service Registry). Once implemented, they are onboarded on the API management platform. +
+Mocking of the APIs allows parallel streams of development between API implementers and API consumers.   
 
 
