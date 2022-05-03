@@ -12,9 +12,9 @@
 ** xref:02-architecture.adoc#more_tech[{module}.{counter:submodule2}. More about the technology stack]
 
 * xref:03-demo.adoc[{counter:module}. See the Solution in Action]
-** xref:03-demo.adoc#demo[{module}.{counter:submodule3}. Demonstration]
-*** xref:03-demo.adoc#demowalkthrough[{module}.{counter:submodule3}. Walkthrough guide]
-*** xref:03-demo.adoc#_before_getting_started[{module}.{counter:submodule3}. Before getting started]
+** xref:03-demo.adoc#demo[{module}.{counter:submodule3}. Recorded demo]
+** xref:03-demo.adoc#demowalkthrough[{module}.{counter:submodule3}. Walkthrough guide]
+*** xref:03-demo.adoc#_before_getting_started[{module}.{counter:submodule3}. Prerequisites]
 *** xref:03-demo.adoc#_step_by_step_guide_[{module}.{counter:submodule3}. Step by step guide]
 
 * xref:04-workshop.adoc[{counter:module}. Workshop]
