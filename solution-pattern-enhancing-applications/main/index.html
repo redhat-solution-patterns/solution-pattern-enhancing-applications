@@ -217,18 +217,21 @@
 <div class="sect1">
 <h2 id="use-cases"><a class="anchor" href="#use-cases"></a>1. Use cases</h2>
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
+<div class="paragraph">
+<p>Use cases that can be addressed with this solution pattern:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p>a</p>
+<p>An application has been modernized from monolith to microservices and from virtual/bare-metal deployment to a a container based application platform. New functionality needs to be added to this existing application to fulfill business needs. The new functionality should be designed and developed as small and targeted microservices.</p>
 </li>
 <li>
-<p>b</p>
+<p>New channels need to be added to the existing, web-based application, e.g. a mobile app. This requires formalizing the application API and exposing the APIs through a API Management solution for consumption by the mobile app.</p>
 </li>
 <li>
-<p>c</p>
+<p>Real-time data gathering and analysis. User activity in the application is gathered and transformed into a stream of activity events. These events are processed and analyzed in real-time.</p>
 </li>
-</ol>
+</ul>
 </div>
 </div>
 </div>
@@ -236,7 +239,7 @@
 <h2 id="background"><a class="anchor" href="#background"></a>2. The story behind this solution pattern</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Globex is a fictitious retail company. The company recently started a digital transformation and cloud adoption journey. As part of this initiative, the development and devops teams have completed the modernization of the existing multi-tier monolithic retail e-commerce web application. The monolithic application was split in a couple of loosely-coupled microservices and the application was rehosted on OpenShift.</p>
+<p>Globex is a fictitious retail company. The company recently started a digital transformation and cloud adoption journey. As part of this initiative, the development and devops teams have completed the modernization of the existing multi-tier monolithic retail e-commerce web application. The monolithic application was split in a couple of loosely-coupled microservices and the application was re-hosted on OpenShift.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -291,6 +294,22 @@
 <div class="sect1">
 <h2 id="solution"><a class="anchor" href="#solution"></a>3. The solution</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This solution pattern focuses on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The introduction of a streaming platform (Apache Kafka) to generate a stream of user activity events from the application web UI. User activity events are sent to a new service using a REST API. This service forwrds the events into the streaming platform.<br>
+The stream of user activity events is processed in real-time using a stream processing library to generate a list of featured products that can be highlighted on the web site.</p>
+</li>
+<li>
+<p>The introduction of an API Management solution (Red Hat OpenShift API management) to expose, secure and manage the APIs to the application backend services. This allows to introduce new channels (mobile application, B2B transactions) in a controlled way.<br>
+Using a contract-first approach, the APIs are specified in a OpenAPI spec document and managed in a registry (Red Hat Openshift Service Registry). Once implemented, they are onboarded on the API management platform.<br>
+Mocking of the APIs allows parallel streams of development between API implementers and API consumers.</p>
+</li>
+</ul>
+</div>
 <h2 class="discrete">Explore more solution patterns</h2>
 <div class="paragraph">
 <p>It&#8217;s time to boost your cloud-native application architectural design with bleeding-edge technology backed by open-source software. Explore the use cases and learn recommended solutions for each of these challenges:</p>
