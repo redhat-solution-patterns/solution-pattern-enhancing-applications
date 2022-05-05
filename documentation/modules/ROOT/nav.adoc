@@ -1,8 +1,8 @@
 * xref:index.adoc[{counter:module}. Home page]
+** xref:index.adoc#content_overview[{module}.{counter:submodule1} Content Overview]
 ** xref:index.adoc#use-cases[{module}.{counter:submodule1} Use cases]
 ** xref:01-pattern.adoc#background[{module}.{counter:submodule1} The story behind this solution pattern]
 ** xref:01-pattern#solution[{module}.{counter:submodule1} The solution]
-** xref:index.adoc#content_overview[{module}.{counter:submodule1} Content Overview]
 ** xref:index.adoc#_explore_more_solution_patterns[{module}.{counter:submodule1} Explore more solution patterns]
 
 * xref:02-architecture.adoc[{counter:module}. Architecture]
