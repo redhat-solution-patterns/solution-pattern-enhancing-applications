@@ -124,7 +124,22 @@
     <a class="nav-link" href="#_before_getting_started">3.3. Prerequisites</a>
   </li>
   <li class="nav-item" data-depth="3">
-    <a class="nav-link" href="#<em>step_by_step_guide</em>">3.4. Step by step guide</a>
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="#_step_by_step_guide">3.4. Step by step guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="#_api_first_approach">API First approach</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="#_managed_apache_kafka_cloud_service">Managed Apache Kafka Cloud Service</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="#_inner_development_loop">Inner Development Loop</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="#_managed_api_management_cloud_service">Managed API Management Cloud Service</a>
+  </li>
+</ul>
   </li>
 </ul>
   </li>
@@ -662,7 +677,7 @@ activity-tracking:
 </li>
 <li>
 <p>Check the deployment progress on the Openshift console. Once all the pods are deployed, the topology in the Developer perspective of the <code>globex-dev</code> namespace should look like:</p>
-<div class="imageblock">
+<div id="globex-developer-perspective-topology" class="imageblock">
 <div class="content">
 <img src="_images/03/globex-developer-perspective-topology.png" alt="globex developer perspective topology">
 </div>
@@ -728,6 +743,401 @@ mp.messaging.connector.smallrye-kafka.sasl.jaas.config=org.apache.kafka.common.s
 </div>
 <div class="paragraph">
 <p>Quarkus dev mode supports live-reload of the application code. So when you change the code, it is automatically reloaded when you do a HTTP call to the application - no need to continuously start and stop the application. Other benefits include opening a port for attaching a debugger, continuous testing and the Dev UI available at <code>/q/dev</code>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_managed_api_management_cloud_service"><a class="anchor" href="#_managed_api_management_cloud_service"></a><a class="link" href="#_managed_api_management_cloud_service">2.2.4. Managed API Management Cloud Service</a></h4>
+<div class="paragraph">
+<p>Red Hat OpenShift API Management is a cloud service for creating, securing, and publishing your APIs. The OpenShift API Management service is an add-on for Red Hat OpenShift Dedicated and Red Hat OpenShift Service on AWS. Red Hat hosts and manages both the service and the underlying OpenShift platform.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The following paragraph will guide you through the setup of a Red Hat OpenShift API Management sandbox instance for managing the APIs.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to <a href="https://developers.redhat.com/products/red-hat-openshift-api-management/overview">OpenShift API Management page</a> and sign up for the OpenShift API Management sandbox with your Red Hat ID and credentials.</p>
+</li>
+<li>
+<p>Follow the instructions on <a href="https://developers.redhat.com/products/red-hat-openshift-api-management/overview">OpenShift API Management Sanbox page</a> to setup a tenant which will be used to manage the APIs</p>
+</li>
+<li>
+<p>When the tenant is is Ready, you can start using the instance, to manage and secure the APIs</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Create an API Product</strong></p>
+</div>
+<div class="paragraph">
+<p>A product is a customer-facing API that packages one or more backends. You will create an API  Product manually with the following instructions</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In a browser window navigate to the Red Hat OpenShift API Management</p>
+</li>
+<li>
+<p>In the Dashboard, under the APIs section, click <strong>Create Product</strong> in the <strong><em>Products</em></strong> card.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/03/rhoam-dashboard.png" alt="Red Hat OpenShift AP Management Dashboard">
+</div>
+</div>
+</li>
+<li>
+<p>Provide the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>globex-product-catalog</code></p>
+</li>
+<li>
+<p><strong>System name</strong>: <code>globex-product</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>Optional field containing more details about the product.</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click Create Product.</p>
+</li>
+<li>
+<p>A Product <code>globex-product-catalog</code> is created and you are taken to the Product Overview page</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Create an API Backend</strong></p>
+</div>
+<div class="paragraph">
+<p>The next step is to create a Backend which for the Product Catalogue API which you will then add to the Product you&#8217;ve created in the previous step</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the Dashboard.</p>
+</li>
+<li>
+<p>Under the APIs section, click Create Backend in the <strong><em>Backends</em></strong> card.</p>
+</li>
+<li>
+<p>Provide the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>globex-catalog</code>.</p>
+</li>
+<li>
+<p><strong>System name</strong>: <code>globex-catalog</code>.</p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>Optional field containing more details about the backend</code>.</p>
+</li>
+<li>
+<p><strong>Private endpoint</strong>: Base URL of the Product Catalog API.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Here are instruction how to access the Private Endpoint of the Product Catalog API.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Access the Developer Perspective Topology as seen in <a href="#globex-developer-perspective-topology">Developer Perspective Topology</a></p>
+</li>
+<li>
+<p>Click on the <strong>Catalog service icon</strong> and you will see the deployment details popup on the right hand side</p>
+</li>
+<li>
+<p>Copy the Location as present at the bottom of this under Routes. This would look something like this <code><a href="https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443" class="bare">https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443</a></code></p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Create Backend</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Define Method, Metrics and Mapping rules</strong></p>
+</div>
+<div class="paragraph">
+<p><strong><em>Setup a new Method</em></strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the Product &gt; globex-catalog &gt; Integration &gt; Methods &amp; Metrics</p>
+</li>
+<li>
+<p>Click <strong>New method</strong></p>
+</li>
+<li>
+<p>Provide the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Friendly name</strong>: <code>getPaginatedProductsList</code></p>
+</li>
+<li>
+<p><strong>System name</strong>: <code>getPaginatedProductsList</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Create Method</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong><em>Setup a new Metric</em></strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the Product &gt; globex-catalog &gt; Integration &gt; Methods &amp; Metrics</p>
+</li>
+<li>
+<p>Click <strong>New metric</strong></p>
+</li>
+<li>
+<p>Provide the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Friendly name</strong>: <code>Hits</code></p>
+</li>
+<li>
+<p><strong>System name</strong>: <code>hits</code></p>
+</li>
+<li>
+<p><strong>Unit</strong>: <code>hit</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>Number of API hits</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Create Metric</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong><em>Setup a new Mapping Rule</em></strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the Product &gt; globex-catalog &gt; Integration &gt; Mapping Rules</p>
+</li>
+<li>
+<p>Click <strong>Create Mapping Rule</strong></p>
+</li>
+<li>
+<p>Provide the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Verb</strong>: <code>GET</code></p>
+</li>
+<li>
+<p><strong>Pattern</strong>: <code>/services/products</code></p>
+</li>
+<li>
+<p><strong>Metric or Method to increment</strong>: Choose <code>getPaginatedProductsList</code></p>
+</li>
+<li>
+<p><strong>Increment by</strong>: <code>1</code></p>
+</li>
+<li>
+<p>Check the checkbox <strong>Last</strong></p>
+</li>
+<li>
+<p><strong>Position</strong>: 0</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Create Mapping Rule</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Create an application plans to define a customer-facing API product</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the Dashboard</p>
+</li>
+<li>
+<p>Under the API section, click on  <code>globex-product-catalog</code> under the <strong><em>Product</em></strong></p>
+</li>
+<li>
+<p>In Applications &gt; Application Plans menu on the left hand side, click on <strong>Create Application Plan</strong></p>
+</li>
+<li>
+<p>Provide the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>globex-app-plan</code></p>
+</li>
+<li>
+<p><strong>System name</strong>: <code>globex-app-plan</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Create Application Plan</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Creating applications for the default account</strong></p>
+</div>
+<div class="paragraph">
+<p>An application is always associated with an application plan. Applications are stored within developer accounts. In basic 3scale plans only a single application is allowed. In enterprise plans, multiple applications per account are allowed.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to Audience &gt; Accounts &gt; Listing.</p>
+</li>
+<li>
+<p>Click <strong>Create</strong> to create a new Developer account.</p>
+</li>
+<li>
+<p>Provide the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Username</strong>: <code>globex-dev</code></p>
+</li>
+<li>
+<p><strong>Email</strong>: enter an email address</p>
+</li>
+<li>
+<p><strong>Password</strong>: enter a password</p>
+</li>
+<li>
+<p><strong>Organization/Group Name</strong>: <code>Globex</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Create</strong></p>
+</li>
+<li>
+<p>Go to the <strong>Application tab</strong> of this account through the navigation on the top of the page.</p>
+</li>
+<li>
+<p>Click <strong>Create Application</strong>.</p>
+</li>
+<li>
+<p>Choose the following details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Product</strong>: <code>globex-catalog</code></p>
+</li>
+<li>
+<p><strong>Application plan</strong>: <code>globex-app-plan</code></p>
+</li>
+<li>
+<p><strong>Name</strong>: <code>globex-application</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: a suitable description</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Create Application</strong>.</p>
+</li>
+<li>
+<p>You can see your new application in Dashboard &gt; Audience &gt; Accounts &gt; Applications &gt; Listing</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Sending requests to your product to test the integration of a backend</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to the Product &gt; <strong>globex-catalog</strong> &gt; Integration &gt; Settings</p>
+</li>
+<li>
+<p>Under <strong>AUTHENTICATION</strong> section, change the following</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>API KEY (USER_KEY) BASICS &gt; Auth user key</strong>: <code>api_key</code></p>
+</li>
+<li>
+<p><strong>CREDENTIALS LOCATION</strong>: Choose <code>As HTTP Headers</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Next, to promote the new APIcast configuration to staging, navigate to the Products&gt; <code>globex-product-catalog</code> &gt; Integration &gt; Configuration.</p>
+</li>
+<li>
+<p>You will see the Mapping Rules, Credential Location and the Backend</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Under <strong>APIcast Configuration</strong>, click Promote to Staging APIcast.</p>
+</li>
+<li>
+<p>Under Staging APIcast, promote the APIcast configuration to production by clicking Promote to Production APIcast.</p>
+</li>
+<li>
+<p>To test requests to your API product, copy the command provided in Example curl for testing and run it in a terminal.</p>
+</li>
+<li>
+<p>After you run the command, you should get a response containing results from Catalog API.</p>
+</li>
+</ul>
 </div>
 </li>
 </ol>
