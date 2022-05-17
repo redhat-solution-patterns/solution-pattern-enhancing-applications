@@ -250,6 +250,7 @@ helm install --dependency-update -n globex-dev -f values.yaml globex globex
 ----
 . Check the deployment progress on the Openshift console. Once all the pods are deployed, the topology in the Developer perspective of the `globex-dev` namespace should look like:
 +
+[[globex-developer-perspective-topology]]
 image::03/globex-developer-perspective-topology.png[]
 
 Let's say that as a developer you need to work on the *Activity Tracking Service*. This service exposes a REST endpoint for posting user activity events. These events are sent to the `globex.tracking` Kafka topic.
@@ -287,3 +288,139 @@ mvn quarkus:dev
 image::03/quarkus-dev-mode.png[]
 +
 Quarkus dev mode supports live-reload of the application code. So when you change the code, it is automatically reloaded when you do a HTTP call to the application - no need to continuously start and stop the application. Other benefits include opening a port for attaching a debugger, continuous testing and the Dev UI available at `/q/dev`.
+
+
+==== Managed API Management Cloud Service
+
+Red Hat OpenShift API Management is a cloud service for creating, securing, and publishing your APIs. The OpenShift API Management service is an add-on for Red Hat OpenShift Dedicated and Red Hat OpenShift Service on AWS. Red Hat hosts and manages both the service and the underlying OpenShift platform.
+
+[NOTE]
+====
+The following paragraph will guide you through the setup of a Red Hat OpenShift API Management sandbox instance for managing the APIs.
+====
+. Navigate to https://developers.redhat.com/products/red-hat-openshift-api-management/overview[OpenShift API Management page] and sign up for the OpenShift API Management sandbox with your Red Hat ID and credentials.
+. Follow the instructions on https://developers.redhat.com/products/red-hat-openshift-api-management/overview[OpenShift API Management Sanbox page] to setup a tenant which will be used to manage the APIs
+. When the tenant is is Ready, you can start using the instance, to manage and secure the APIs
+
+*Create an API Product*
+
+A product is a customer-facing API that packages one or more backends. You will create an API  Product manually with the following instructions
+
+. In a browser window navigate to the Red Hat OpenShift API Management
+. In the Dashboard, under the APIs section, click *Create Product* in the *_Products_* card.
++
+image::03/rhoam-dashboard.png[Red Hat OpenShift AP Management Dashboard]
+. Provide the following details:
++
+* *Name*: `globex-product-catalog`
+* *System name*: `globex-product`
+* *Description*: `Optional field containing more details about the product.`
+
+. Click Create Product.
+. A Product `globex-product-catalog` is created and you are taken to the Product Overview page
+
+*Create an API Backend*
+
+The next step is to create a Backend which for the Product Catalogue API which you will then add to the Product you've created in the previous step
+
+. Go to the Dashboard.
+. Under the APIs section, click Create Backend in the *_Backends_* card.
+. Provide the following details:
+* *Name*: `globex-catalog`.
+* *System name*: `globex-catalog`.
+* *Description*: `Optional field containing more details about the backend`.
+* *Private endpoint*: Base URL of the Product Catalog API.
++ 
+[NOTE]
+====
+Here are instruction how to access the Private Endpoint of the Product Catalog API.
+
+. Access the Developer Perspective Topology as seen in <<globex-developer-perspective-topology, Developer Perspective Topology>>
+. Click on the *Catalog service icon* and you will see the deployment details popup on the right hand side
+. Copy the Location as present at the bottom of this under Routes. This would look something like this `https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443`
+====
+
+. Click *Create Backend*.
+
+*Define Method, Metrics and Mapping rules*
+
+*_Setup a new Method_*
+
+. Navigate to the Product > globex-catalog > Integration > Methods & Metrics
+. Click *New method*
+. Provide the following details:
+* *Friendly name*: `getPaginatedProductsList`
+* *System name*: `getPaginatedProductsList`
+. Click *Create Method*
+
+
+*_Setup a new Metric_*
+
+. Navigate to the Product > globex-catalog > Integration > Methods & Metrics
+. Click *New metric*
+. Provide the following details:
+* *Friendly name*: `Hits`
+* *System name*: `hits`
+* *Unit*: `hit`
+* *Description*: `Number of API hits`
+. Click *Create Metric*
+
+*_Setup a new Mapping Rule_*
+
+
+. Navigate to the Product > globex-catalog > Integration > Mapping Rules
+. Click *Create Mapping Rule*
+. Provide the following details:
+* *Verb*: `GET`
+* *Pattern*: `/services/products`
+* *Metric or Method to increment*: Choose `getPaginatedProductsList`
+* *Increment by*: `1`
+* Check the checkbox *Last*
+* *Position*: 0
+. Click *Create Mapping Rule*
+
+
+*Create an application plans to define a customer-facing API product*
+
+. Go to the Dashboard
+. Under the API section, click on  `globex-product-catalog` under the *_Product_*
+. In Applications > Application Plans menu on the left hand side, click on *Create Application Plan*
+. Provide the following details:
+* *Name*: `globex-app-plan`
+* *System name*: `globex-app-plan`
+. Click *Create Application Plan*.
+
+*Creating applications for the default account*
+
+An application is always associated with an application plan. Applications are stored within developer accounts. In basic 3scale plans only a single application is allowed. In enterprise plans, multiple applications per account are allowed.
+
+. Navigate to Audience > Accounts > Listing.
+. Click *Create* to create a new Developer account.
+. Provide the following details:
+* *Username*: `globex-dev`
+* *Email*: enter an email address
+* *Password*: enter a password
+* *Organization/Group Name*: `Globex`
+. Click *Create*
+. Go to the *Application tab* of this account through the navigation on the top of the page.
+. Click *Create Application*.
+. Choose the following details:
+* *Product*: `globex-catalog`
+* *Application plan*: `globex-app-plan`
+* *Name*: `globex-application`
+* *Description*: a suitable description
+. Click *Create Application*.
+. You can see your new application in Dashboard > Audience > Accounts > Applications > Listing
+
+*Sending requests to your product to test the integration of a backend*
+
+. Navigate to the Product > *globex-catalog* > Integration > Settings
+. Under *AUTHENTICATION* section, change the following
+* *API KEY (USER_KEY) BASICS > Auth user key*: `api_key`
+* *CREDENTIALS LOCATION*: Choose `As HTTP Headers`
+. Next, to promote the new APIcast configuration to staging, navigate to the Products> `globex-product-catalog` > Integration > Configuration.
+. You will see the Mapping Rules, Credential Location and the Backend
+* Under *APIcast Configuration*, click Promote to Staging APIcast.
+* Under Staging APIcast, promote the APIcast configuration to production by clicking Promote to Production APIcast.
+* To test requests to your API product, copy the command provided in Example curl for testing and run it in a terminal.
+* After you run the command, you should get an HTML response containing results from the backend you are testing.
