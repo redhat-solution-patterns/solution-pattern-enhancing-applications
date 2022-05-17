@@ -423,4 +423,4 @@ An application is always associated with an application plan. Applications are s
 * Under *APIcast Configuration*, click Promote to Staging APIcast.
 * Under Staging APIcast, promote the APIcast configuration to production by clicking Promote to Production APIcast.
 * To test requests to your API product, copy the command provided in Example curl for testing and run it in a terminal.
-* After you run the command, you should get an HTML response containing results from the backend you are testing.
+* After you run the command, you should get a response containing results from Catalog API.
