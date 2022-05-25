@@ -5,14 +5,16 @@
 
 = Workshop
 
+include::04-workshop-intro.adoc[]
+
 == Adding Event Streaming capabilities to an application
 
 === Introduction
 
 To support the business requirement of capturing and processing user activity on the Globex Coolstuff application, two new services have been developed:
 
-* Activity Tracking service: This service exposes a REST endpoint. User activities on the Coolstuff website (such as opening a product page, liking a product etc..) generates an activity payload which is sent to the Activity tracking REST endpoint. The service transforms this payload into a Kafka message which is sent to a topic on the Kafka broker.
-* Recommendation Engine: This service consumes and processes the events produced by the Activity Tracking service. The service uses the Kafka Streams library to continuously determine the top featured products (the products which generate the most activities).
+* *Activity Tracking service*: This service exposes a REST endpoint. User activities on the Coolstuff website (such as opening a product page, liking a product etc..) generates an activity payload which is sent to the Activity tracking REST endpoint. The service transforms this payload into a Kafka message which is sent to a topic on the Kafka broker.
+* *Recommendation Engine*: This service consumes and processes the events produced by the Activity Tracking service. The service uses the Kafka Streams library to continuously determine the top featured products (the products which generate the most activities).
 The service also exposes a REST endpoint to expose the list of featured products.
 
 Both services are developed using Quarkus and the Quarkus extensions for reactive messaging and Kafka Streams. The development of the services is outside the scope of this workshop, but you are encouraged to examine the source code of the applications on GitHub: link:https://https://github.com/app-modernization-workshop-globex/activity-tracking-service[Activity Tracking Service] and link:https://github.com/app-modernization-workshop-globex/recommendation-engine[Recommendation Engine]
@@ -244,7 +246,7 @@ If you prefer to use the `rhoas` CLI to provision and configure the OpenShift St
 
 * Install the `rhoas` CLI
 ** Obtain the latest release of the `rhoas` CLI archive for your operating system from the https://github.com/redhat-developer/app-services-cli/releases/latest[Red Hat OpenShift Application Services CLI releases] page on GitHub.
-** Install the package (or extract the archive), and add the `rhoam` executable to your path.
+** Install the package (or extract the archive), and add the `rhoas` executable to your path.
 ** Check the version of the CLI
 +
 [.console-input]
@@ -534,3 +536,7 @@ $ rhoas cluster bind -n globex --app-name activity-tracking --service-type kafka
 $ rhoas cluster bind -n globex --app-name recommendation-engine --service-type kafka --service-name globex -y
 ----
 ====
+
+:sectnums:
+
+include::04-workshop-api.adoc[]

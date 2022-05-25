@@ -22,10 +22,10 @@
 **** xref:03-demo.adoc#_managed_api_management_cloud_service[Managed API Management Cloud Service]
 
 * xref:04-workshop.adoc[{counter:module}. Workshop]
-//** xref:04-workshop.adoc#_workshop[{module}.{counter:submodule4}. Installing the workshop environment]
-//*** xref:04-workshop.adoc#pre_reqs_wksp[{module}.{counter:submodule4}. Before getting started]
-//*** xref:04-workshop.adoc#install_wksp_details[{module}.{counter:submodule4}. Installing the environment]
-//** xref:04-workshop.adoc#deliver_wksp[{module}.{counter:submodule4}. Delivering the workshop]
+** xref:04-workshop.adoc#pre_reqs_wksp[{module}.{counter:submodule4}. Before getting started]
+** xref:04-workshop.adoc#workshop_env[{module}.{counter:submodule4}. Installing the workshop environment]
+** xref:04-workshop.adoc#install_wksp_details[{module}.{counter:submodule4}. Installing the environment]
+** xref:04-workshop.adoc#deliver_wksp[{module}.{counter:submodule4}. Delivering the workshop]
 
 * https://redhat-solution-patterns.github.io/[{counter:module}. Other Red Hat Solution Patterns]
 

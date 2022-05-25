@@ -1,0 +1,42 @@
+== Introduction
+
+=== Workshop scenario
+Fast forward 6 months!
+
+In Phase 2, the customer would like to enhance their modernized application to include new requirements and features.
+
+* Track how visitors engage with their website, derive intelligence  out of user activity stream
+* Process and analyse  this user activity stream  to showcase Featured Products based on products with the most customer interest leading a more personalised experience.
+* Introduce a multi-channel approach to build a mobile app as a new channel of access - mobile development is  most likely to be outsourced
+
+=== Common Challenges
+There are however a number of challenges with the new requirements:
+
+* Adding new channels remains difficult, with a high risk of tight coupling to the existing services, which would slow down development productivity and time to market.
+* The existing services need to be managed and secured to allow access for external partners and development teams. Governance remains a challenge.
+* Adoption of new technologies such as event streaming requires time and new skills, which are not readily available inside the company.
+
+In order to cope with these challenges, the development team decides for a new approach.
+
+=== A new development approach
+*Adoption of Apache Kafka* as a streaming platform to ingest and process user activity event streams.
+
+*API First approach*:  API contract is formalized in a OpenAPI spec document before dev commences.  API design phase is done collaboratively with all stakeholders. The  first version of the OpenAPI spec document is pushed and managed in a service registry, which acts a the system of truth. Mocks are created for the API.
+
+*Parallel Development* streams with  API first approach enables parallel development streams. 
+- UI development teams and other API consumers start their development against the mocked 
+- Backend development teams can implement the APIs using modern cloud-native frameworks and test the implementation against the OpenAPI spec to ensure that the implementation does not break the contract.
+
+*Manage and Secure the APIs*  Use nn API management platform  to expose the APIs in a secure and managed manner for access by the mobile app and other 3rd party applications.
+
+
+*Managed cloud services* preferred for easy and rapid adoption of new middleware components like the API Management platform and Apache Kafka; this allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these components.
+
+=== Workshop goals
+
+The primary goal of the workshop is to guide the user through 
+
+* Adding *Event Streaming capabilities* to an application
+* Adding *API management capabilities* to an application
+
+To learn how to demonstrate the API first approach and enabling parallel development, refer to https://redhat-solution-patterns.github.io/solution-pattern-enhancing-applications/solution-pattern-enhancing-applications/main/index.html[Solution Pattern: Enhancing Applications with Application Services] 
