@@ -199,7 +199,7 @@
   <div class="content">
 <article class="doc">
 <div class="sect1">
-<h2 id="_adding_api_management_capabilities_to_an_application"><a class="anchor" href="#_adding_api_management_capabilities_to_an_application"></a>Adding API Management capabilities to an application</h2>
+<h2 id="_adding_api_management_capabilities_to_the_application"><a class="anchor" href="#_adding_api_management_capabilities_to_the_application"></a>Adding API Management capabilities to the application</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h3>
@@ -262,9 +262,19 @@
 </li>
 <li>
 <p>Click on <strong>Resources</strong> to search for <code>APIManagementTenant</code> and select it.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/tenant-search.png" alt="tenant search" width="100%">
+</div>
+</div>
 </li>
 <li>
 <p>Select <strong>Create APIManagementTenant</strong> button</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/create-APIManagementTenant.png" alt="create APIManagementTenant" width="100%">
+</div>
+</div>
 </li>
 <li>
 <p>You will be taken to the YAML configuration of this resource. Click the  Create button at the bottom of the YAML displayed.</p>
@@ -274,6 +284,11 @@
 </li>
 <li>
 <p>Watch for changes to the YAML of the APIManagementTenant resource, and wait for  the status to be displayed at the bottom of the YAML to become <code>status.provisioningStatus: 3scale account ready</code></p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/api-tenant-deployed.png" alt="api tenant deployed" width="100%">
+</div>
+</div>
 </li>
 <li>
 <p>The API Management  Tenant account is now provisioned and is ready for use.
@@ -281,9 +296,24 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>To access OpenShift API Management, navigate to the Launcher pane on the right side, select <code>API Management</code></p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/launcher-pane.png" alt="launcher pane" width="100%">
+</div>
+</div>
 </li>
 <li>
 <p>Choose to authenticate using Red Hat Single Sign-On, and  login using the identity provider that applies to you, e.g DevSandbox.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/sso-login.png" alt="sso login" width="100%">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/devsandbox-login.png" alt="devsandbox login" width="100%">
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -302,13 +332,13 @@ This may take a couple of minutes</p>
 <p>creating a Backend</p>
 </li>
 <li>
-<p>Defining Method, Metrics and Mapping rules</p>
+<p>defining Method, Metrics and Mapping rules</p>
 </li>
 <li>
-<p>Creating an application plans</p>
+<p>creating an application plans</p>
 </li>
 <li>
-<p>Creating applications for the default account</p>
+<p>creating an application for the default account/audience</p>
 </li>
 </ul>
 </div>
@@ -327,12 +357,17 @@ This may take a couple of minutes</p>
 <p>In the Dashboard, under the APIs section, click <strong>Create Product</strong> in the <strong><em>Products</em></strong> card.</p>
 <div class="imageblock">
 <div class="content">
-<img src="_images/03/rhoam-dashboard.png" alt="Red Hat OpenShift AP Management Dashboard">
+<img src="_images/04/rhoam-dashboard.png" alt="Red Hat OpenShift API Management Dashboard">
 </div>
 </div>
 </li>
 <li>
 <p>Provide the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/create-product.png" alt="create product" width="100%">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -348,7 +383,7 @@ This may take a couple of minutes</p>
 </div>
 </li>
 <li>
-<p>Click Create Product.</p>
+<p>Click <strong>Create Product</strong>.</p>
 </li>
 <li>
 <p>A Product <code>globex-product-catalog</code> is created and you are taken to the Product Overview page</p>
@@ -371,6 +406,11 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Provide the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/create-backend.png" alt="create backend">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -401,16 +441,12 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Click on the <strong>catalog-service icon</strong> and you will see the deployment details popup on the right hand side</p>
-</li>
-</ul>
-</div>
 <div class="imageblock">
 <div class="content">
 <img src="_images/04/globex-deployment-topology-catalog-service.png" alt="globex deployment topology catalog service">
 </div>
 </div>
-<div class="ulist">
-<ul>
+</li>
 <li>
 <p>Copy the Location as present at the bottom of this under Routes. This would look something like this <code><a href="https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443" class="bare">https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443</a></code></p>
 </li>
@@ -445,6 +481,11 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Provide the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/new-method.png" alt="new method">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -474,6 +515,11 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Provide the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/new-metric.png" alt="new metric">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -509,6 +555,11 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Provide the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/new-mapping-rule.png" alt="new mapping rule">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -553,6 +604,11 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Provide the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/create-app-plan.png" alt="create app plan">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -585,6 +641,11 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Provide the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/create-audience.png" alt="create audience">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -607,12 +668,25 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Go to the <strong>Application tab</strong> of this account through the navigation on the top of the page.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/audience-add-app.png" alt="audience add app">
+</div>
+</div>
 </li>
 <li>
 <p>Click <strong>Create Application</strong>.</p>
 </li>
 <li>
+<p>You will view the <strong>New Application</strong> page</p>
+</li>
+<li>
 <p>Choose the following details:</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/create-app.png" alt="create app">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -651,6 +725,11 @@ This may take a couple of minutes</p>
 </li>
 <li>
 <p>Under <strong>AUTHENTICATION</strong> section, change the following</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/auth-settings.png" alt="auth settings">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -676,10 +755,26 @@ This may take a couple of minutes</p>
 <p>Under Staging APIcast, promote the APIcast configuration to production by clicking Promote to Production APIcast.</p>
 </li>
 <li>
-<p>To test requests to your API product, copy the command provided in Example curl for testing and run it in a terminal.</p>
+<p>To test requests to your API product, copy the command provided in <strong>Example curl for testing</strong> and run it in a terminal.</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/curl-test-api.png" alt="curl test api">
+</div>
+</div>
 </li>
 <li>
 <p>After you run the command, you should get a response containing results from Catalog API.</p>
+</li>
+<li>
+<p>In real life, the mobile app would be using the staging and production API endpoints securely to access the APIs.</p>
+</li>
+<li>
+<p>Click on the Analytics &#8594; Traffic link on the left hand side. You will see the Hits details</p>
+<div class="imageblock">
+<div class="content">
+<img src="_images/04/api-traffic.png" alt="api traffic">
+</div>
+</div>
 </li>
 </ul>
 </div>
