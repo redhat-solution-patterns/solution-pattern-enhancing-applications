@@ -1,4 +1,4 @@
-== Adding API Management capabilities to an application
+== Adding API Management capabilities to the application
 
 === Introduction
 
@@ -36,14 +36,25 @@ You will be asked to confirm the request through an email sent to your inbox. On
 * From the *Projects* dropdown on the top of the page, set the project namespace as *<username>-dev* from the projects that have been already created for you.
 * Click on *Search* from the left navigation
 * Click on *Resources* to search for `APIManagementTenant` and select it. 
++
+image::04/tenant-search.png[width=100%]
 * Select *Create APIManagementTenant* button
++
+image::04/create-APIManagementTenant.png[width=100%]
 * You will be taken to the YAML configuration of this resource. Click the  Create button at the bottom of the YAML displayed.
 * You will be taken to the Details page of this resource. Click on the YAML tab to view the changes to the YAML configuration.
 * Watch for changes to the YAML of the APIManagementTenant resource, and wait for  the status to be displayed at the bottom of the YAML to become `status.provisioningStatus: 3scale account ready`
++
+image::04/api-tenant-deployed.png[width=100%]
 * The API Management  Tenant account is now provisioned and is ready for use. 
 This may take a couple of minutes 
 * To access OpenShift API Management, navigate to the Launcher pane on the right side, select `API Management`
++
+image::04/launcher-pane.png[width=100%]
 * Choose to authenticate using Red Hat Single Sign-On, and  login using the identity provider that applies to you, e.g DevSandbox.
++
+image::04/sso-login.png[width=100%] 
+image::04/devsandbox-login.png[width=100%] 
 
 
 ==== Configure and manage your API 
@@ -51,9 +62,9 @@ The following sections will guide you through
 
 * creating a Product
 * creating a Backend
-* Defining Method, Metrics and Mapping rules
-* Creating an application plans 
-* Creating applications for the default account
+* defining Method, Metrics and Mapping rules
+* creating an application plans 
+* creating an application for the default account/audience
 
 ==== Create an API Product
 
@@ -62,14 +73,16 @@ A product is a customer-facing API that packages one or more backends. You will 
 . In a browser window navigate to the Red Hat OpenShift API Management
 . In the Dashboard, under the APIs section, click *Create Product* in the *_Products_* card.
 +
-image::03/rhoam-dashboard.png[Red Hat OpenShift AP Management Dashboard]
+image::04/rhoam-dashboard.png[Red Hat OpenShift API Management Dashboard]
 . Provide the following details:
++
+image::04/create-product.png[width=100%]
 +
 * *Name*: `globex-product-catalog`
 * *System name*: `globex-product`
 * *Description*: `Optional field containing more details about the product.`
 
-. Click Create Product.
+. Click *Create Product*.
 . A Product `globex-product-catalog` is created and you are taken to the Product Overview page
 
 ==== Create an API Backend
@@ -79,6 +92,8 @@ The next step is to create a Backend which for the Product Catalogue API which y
 . Go to the Dashboard.
 . Under the APIs section, click Create Backend in the *_Backends_* card.
 . Provide the following details:
++
+image::04/create-backend.png[]
 * *Name*: `globex-catalog`.
 * *System name*: `globex-catalog`.
 * *Description*: `Optional field containing more details about the backend`.
@@ -90,9 +105,8 @@ Here are instruction how to access the Private Endpoint of the Product Catalog A
 
 * Access the Developer Perspective Topology of the OpenShift enviroment where the Globex application has been deployed
 * Click on the *catalog-service icon* and you will see the deployment details popup on the right hand side
-
++
 image::04/globex-deployment-topology-catalog-service.png[]
-
 * Copy the Location as present at the bottom of this under Routes. This would look something like this `https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443`
 ====
 
@@ -105,6 +119,8 @@ image::04/globex-deployment-topology-catalog-service.png[]
 . Navigate to the Product > globex-catalog > Integration > Methods & Metrics
 . Click *New method*
 . Provide the following details:
++
+image::04/new-method.png[]
 * *Friendly name*: `getPaginatedProductsList`
 * *System name*: `getPaginatedProductsList`
 . Click *Create Method*
@@ -115,6 +131,8 @@ image::04/globex-deployment-topology-catalog-service.png[]
 . Navigate to the Product > globex-catalog > Integration > Methods & Metrics
 . Click *New metric*
 . Provide the following details:
++
+image::04/new-metric.png[]
 * *Friendly name*: `Hits`
 * *System name*: `hits`
 * *Unit*: `hit`
@@ -127,6 +145,8 @@ image::04/globex-deployment-topology-catalog-service.png[]
 . Navigate to the Product > globex-catalog > Integration > Mapping Rules
 . Click *Create Mapping Rule*
 . Provide the following details:
++
+image::04/new-mapping-rule.png[]
 * *Verb*: `GET`
 * *Pattern*: `/services/products`
 * *Metric or Method to increment*: Choose `getPaginatedProductsList`
@@ -142,6 +162,8 @@ image::04/globex-deployment-topology-catalog-service.png[]
 . Under the API section, click on  `globex-product-catalog` under the *_Product_*
 . In Applications > Application Plans menu on the left hand side, click on *Create Application Plan*
 . Provide the following details:
++
+image::04/create-app-plan.png[]
 * *Name*: `globex-app-plan`
 * *System name*: `globex-app-plan`
 . Click *Create Application Plan*.
@@ -153,14 +175,21 @@ An application is always associated with an application plan. Applications are s
 . Navigate to Audience > Accounts > Listing.
 . Click *Create* to create a new Developer account.
 . Provide the following details:
++
+image::04/create-audience.png[]
 * *Username*: `globex-dev`
 * *Email*: enter an email address
 * *Password*: enter a password
 * *Organization/Group Name*: `Globex`
 . Click *Create*
 . Go to the *Application tab* of this account through the navigation on the top of the page.
++
+image::04/audience-add-app.png[]
 . Click *Create Application*.
+. You will view the *New Application* page
 . Choose the following details:
++
+image::04/create-app.png[]
 * *Product*: `globex-catalog`
 * *Application plan*: `globex-app-plan`
 * *Name*: `globex-application`
@@ -175,12 +204,22 @@ An application is always associated with an application plan. Applications are s
 
 . Navigate to the Product > *globex-catalog* > Integration > Settings
 . Under *AUTHENTICATION* section, change the following
++
+image::04/auth-settings.png[]
 * *API KEY (USER_KEY) BASICS > Auth user key*: `api_key`
 * *CREDENTIALS LOCATION*: Choose `As HTTP Headers`
 . Next, to promote the new APIcast configuration to staging, navigate to the Products> `globex-product-catalog` > Integration > Configuration.
 . You will see the Mapping Rules, Credential Location and the Backend
 * Under *APIcast Configuration*, click Promote to Staging APIcast.
 * Under Staging APIcast, promote the APIcast configuration to production by clicking Promote to Production APIcast.
-* To test requests to your API product, copy the command provided in Example curl for testing and run it in a terminal.
+* To test requests to your API product, copy the command provided in *Example curl for testing* and run it in a terminal.
++
+image::04/curl-test-api.png[]
 * After you run the command, you should get a response containing results from Catalog API.
+
+* In real life, the mobile app would be using the staging and production API endpoints securely to access the APIs.
+* Click on the Analytics -> Traffic link on the left hand side. You will see the Hits details
++
+image::04/api-traffic.png[]
+
 
