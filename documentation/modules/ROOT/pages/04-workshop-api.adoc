@@ -18,7 +18,7 @@ In this part of the workshop you will:
 
 === Environment and prerequisites
 
-The *Product catalog API* is already deployed on the OpenShift cluster in the namespace you've been using for this portion of the workshop. You will use the  Red Hat OpenShift API management sandbox to manage this API.  All activities in this part of the workshop can be done in the RHOAMsandbox console and do not require any tools to be installed on your workstation. 
+The *Product catalog API* is already deployed on the OpenShift cluster in the namespace you've been using for this portion of the workshop. You will use the  Red Hat OpenShift API management sandbox to manage this API.  All activities in this part of the workshop can be done in the RHOAM sandbox console and do not require any tools to be installed on your workstation. 
 
 Prerequisites:
 
@@ -30,7 +30,7 @@ Prerequisites:
 
 ==== Signup and launch Red Hat OpenShift API Management sandbox
 
-Register for a RHOAM sandbox by clicking on the red button in the https://developers.redhat.com/developer-sandbox/activities/share-java--applications-openshift-api-management[user activities page]
+Register for a RHOAM sandbox by clicking on the red button in the link:https://developers.redhat.com/developer-sandbox/activities/share-java\--applications-openshift-api-management[Developer Sandbox use case activities page].
 
 You will be asked to confirm the request through an email sent to your inbox. Once you launch the sandbox, follow these steps to setup an RHOAM sandbox tenant
 
