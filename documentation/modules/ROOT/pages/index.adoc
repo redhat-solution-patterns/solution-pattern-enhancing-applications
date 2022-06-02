@@ -12,6 +12,6 @@ include::content-overview.adoc[]
 
 include::01-pattern.adoc[]
 
-[discrete]
+[#_explore_more_solution_patterns]
 == Explore more solution patterns
 include::https://raw.githubusercontent.com/redhat-solution-patterns/redhat-solution-patterns.github.io/master/documentation/modules/ROOT/pages/solution-pattern-list.adoc[]

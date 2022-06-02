@@ -7,24 +7,26 @@
 
 Here you find a recorded video of the solution pattern, as well as a walkthrough guide through the different aspects of the solution pattern.
 
-[#demo]
+[#recorded_demo]
 == Recorded demo
 video::3yULVMdqJ98[youtube, width=800, height=480]
 
-[#demowalkthrough]
+[#demo_walkthrough]
 == Walkthrough guide
 
 This section shows you how you can set up the different parts of the solution pattern, so that you can walk through the demo.
 
-=== Before getting started
+[#demo_prerequisites]
+=== Prerequisites
 
-You will need the following pre-requisites:
+You will need the following prerequisites:
 
 * Access to an OpenShift environment, preferably with `cluster-admin` privileges.
 * A Red Hat account
 * `oc` OpenShift CLI
 * `helm` Helm CLI
 
+[#demo_step_by_step]
 === Step by step guide
 
 ==== API First approach

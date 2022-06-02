@@ -19,8 +19,8 @@ xref:02-architecture.adoc#more_tech[{counter:submodule2}. More about the technol
 +
 xref:03-demo.adoc[{counter:module}. Demonstration]::
 +
-xref:03-demo.adoc[{counter:submodule3:1}. Demonstration] +
-xref:03-demo.adoc#demowalkthrough[{counter:submodule3}. Walkthrough guide] 
+xref:03-demo.adoc#recorded_demo[{counter:submodule3}. Recorded demo] +
+xref:03-demo.adoc#demo_walkthrough[{counter:submodule3}. Walkthrough guide] 
 +
 xref:04-workshop.adoc[{counter:module}. Workshop]::
 +
