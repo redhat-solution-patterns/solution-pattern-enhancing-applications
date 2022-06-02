@@ -22,9 +22,10 @@ xref:03-demo.adoc[{counter:module}. Demonstration]::
 xref:03-demo.adoc[{counter:submodule3:1}. Demonstration] +
 xref:03-demo.adoc#demowalkthrough[{counter:submodule3}. Walkthrough guide] 
 +
-//xref:04-workshop.adoc[{counter:module}. Workshop]::
-//+
-//xref:04-workshop.adoc#_installing_the_workshop_environment[{counter:submodule4}. Installing the workshop environment] +
-//xref:04-workshop.adoc#_delivering_the_workshop[{counter:submodule4}. Delivering the workshop]
+xref:04-workshop.adoc[{counter:module}. Workshop]::
++
+xref:04-workshop.adoc#workshop_intro[{counter:submodule4}. Introduction] +
+xref:04-workshop.adoc#workshop_add_streaming[{counter:submodule4}. Adding Event Streaming capabilities] +
+xref:04-workshop.adoc#workshop_api_mgmt[{counter:submodule4}. Adding API Management capabilities] +
 ====
 

@@ -1,3 +1,4 @@
+[#workshop_intro]
 == Introduction
 
 === Workshop scenario

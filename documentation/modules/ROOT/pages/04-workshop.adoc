@@ -7,7 +7,8 @@
 
 include::04-workshop-intro.adoc[]
 
-== Adding Event Streaming capabilities to an application
+[#workshop_add_streaming]
+== Adding Event Streaming capabilities to the application
 
 === Introduction
 

@@ -1,3 +1,4 @@
+[#workshop_api_mgmt]
 == Adding API Management capabilities to the application
 
 === Introduction
