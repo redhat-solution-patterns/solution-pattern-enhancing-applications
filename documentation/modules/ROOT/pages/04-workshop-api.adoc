@@ -3,26 +3,26 @@
 
 === Introduction
 
-To support the business requirement of managing and securing access to the services, Red Hat® OpenShift API Management (RHOAM) will be used as the API management platform. 
+To support the business requirement of managing and securing access to the services, Red Hat® OpenShift API Management will be used as the API management platform. 
 
-RHOAM is a hosted and managed API management service delivered as an add-on product to Red Hat OpenShift Dedicated, a fully managed service of enterprise Kubernetes platform Red Hat OpenShift, and also on Red Hat OpenShift Service on AWS (ROSA)
+Red Hat OpenShift API Management is a hosted and managed API management service delivered as an add-on product to Red Hat OpenShift Dedicated, a fully managed service of enterprise Kubernetes platform Red Hat OpenShift, and also on Red Hat OpenShift Service on AWS (ROSA)
 
 
 === Activities
 
 In this part of the workshop you will:
 
-* Setup a RHOAM sandbox environment
+* Setup a Red Hat OpenShift API Management sandbox environment
 * Manage and secure the already deployed Product catalog service.
 
 
 === Environment and prerequisites
 
-The *Product catalog API* is already deployed on the OpenShift cluster in the namespace you've been using for this portion of the workshop. You will use the  Red Hat OpenShift API management sandbox to manage this API.  All activities in this part of the workshop can be done in the RHOAM sandbox console and do not require any tools to be installed on your workstation. 
+The *Product catalog API* is already deployed on the OpenShift cluster in the namespace you've been using for this portion of the workshop. You will use the  Red Hat OpenShift API management sandbox to manage this API.  All activities in this part of the workshop can be done in the Red Hat OpenShift API Management sandbox console and do not require any tools to be installed on your workstation. 
 
 Prerequisites:
 
-* A Red Hat Account 
+* A Red Hat account 
 
 
 === Step-By-Step Instructions
@@ -30,9 +30,9 @@ Prerequisites:
 
 ==== Signup and launch Red Hat OpenShift API Management sandbox
 
-Register for a RHOAM sandbox by clicking on the red button in the link:https://developers.redhat.com/developer-sandbox/activities/share-java\--applications-openshift-api-management[Developer Sandbox use case activities page].
+Register for a Red Hat OpenShift API Management sandbox by clicking on the red button in the link:https://developers.redhat.com/developer-sandbox/activities/share-java\--applications-openshift-api-management[Developer Sandbox use case activities page].
 
-You will be asked to confirm the request through an email sent to your inbox. Once you launch the sandbox, follow these steps to setup an RHOAM sandbox tenant
+You will be asked to confirm the request through an email sent to your inbox. Once you launch the sandbox, follow these steps to setup a Red Hat OpenShift API Management sandbox tenant
 
 * From the *Projects* dropdown on the top of the page, set the project namespace as *<username>-dev* from the projects that have been already created for you.
 * Click on *Search* from the left navigation
@@ -104,7 +104,7 @@ image::04/create-backend.png[]
 ====
 Here are instruction how to access the Private Endpoint of the Product Catalog API.
 
-* Access the Developer Perspective Topology of the OpenShift enviroment where the Globex application has been deployed
+* Access the Developer Perspective Topology of the OpenShift environment where the Globex application has been deployed
 * Click on the *catalog-service icon* and you will see the deployment details popup on the right hand side
 +
 image::04/globex-deployment-topology-catalog-service.png[]
