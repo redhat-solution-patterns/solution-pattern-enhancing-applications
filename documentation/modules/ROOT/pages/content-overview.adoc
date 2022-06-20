@@ -24,6 +24,8 @@ xref:03-demo.adoc#demo_walkthrough[{counter:submodule3}. Walkthrough guide]
 +
 xref:04-workshop.adoc[{counter:module}. Workshop]::
 +
+xref:04-workshop.adoc#workshop_prerequisites[{counter:submodule4}. Prerequisites] +
+xref:04-workshop.adoc#workshop_provisioning[{counter:submodule4}. Provisioning] +
 xref:04-workshop.adoc#workshop_intro[{counter:submodule4}. Introduction] +
 xref:04-workshop.adoc#workshop_add_streaming[{counter:submodule4}. Adding Event Streaming capabilities] +
 xref:04-workshop.adoc#workshop_api_mgmt[{counter:submodule4}. Adding API Management capabilities] +

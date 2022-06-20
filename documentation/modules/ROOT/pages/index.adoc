@@ -6,7 +6,7 @@
 
 [discrete]
 
-Most enterprises undertake app modernization of existing monolithic applications to microservices to enable cloud adoption and agility. This solution pattern takes a look at enhancing these Applications with Application Services, thereby realising greater business value.
+Most enterprises undertake app modernization of existing monolithic applications to microservices to enable cloud adoption and agility. This solution pattern takes a look at enhancing these Applications with Application Services, thereby realizing greater business value.
 
 include::content-overview.adoc[]
 
