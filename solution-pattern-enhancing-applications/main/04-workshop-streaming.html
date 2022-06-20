@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Enhancing Applications with Application Services :: Solution Patterns for Cloud Native Architectures</title>
-    <link rel="prev" href="03-demo.html">
+    <title>Untitled :: Solution Patterns for Cloud Native Architectures</title>
     <meta name="generator" content="Antora 3.0.0">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../_/img/favicon.ico" type="image/x-icon">
@@ -143,24 +142,24 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="04-workshop.html">4. Workshop</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#workshop_prerequisites">1. Prerequisites</a>
+    <a class="nav-link" href="04-workshop.html#workshop_prerequisites">1. Prerequisites</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#workshop_provisioning">2. Provisioning</a>
+    <a class="nav-link" href="04-workshop.html#workshop_provisioning">2. Provisioning</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#workshop_intro">3. Introduction</a>
+    <a class="nav-link" href="04-workshop.html#workshop_intro">3. Introduction</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#workshop_add_streaming">4. Adding Event Streaming capabilities</a>
+    <a class="nav-link" href="04-workshop.html#workshop_add_streaming">4. Adding Event Streaming capabilities</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="#workshop_api_mgmt">5. Adding API Management capabilities</a>
+    <a class="nav-link" href="04-workshop.html#workshop_api_mgmt">5. Adding API Management capabilities</a>
   </li>
 </ul>
   </li>
@@ -196,222 +195,16 @@
 <button class="nav-toggle"></button>
   <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
-  <ul>
-    <li><a href="index.html">Enhancing Applications with Application Services</a></li>
-    <li><a href="04-workshop.html">4. Workshop</a></li>
-  </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/redhat-solution-patterns/solution-pattern-enhancing-applications/edit/main/documentation/modules/ROOT/pages/04-workshop.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/redhat-solution-patterns/solution-pattern-enhancing-applications/edit/main/documentation/modules/ROOT/pages/04-workshop-streaming.adoc">Edit this Page</a></div>
   </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Enhancing Applications with Application Services</h1>
-<h1 id="_workshop" class="sect0"><a class="anchor" href="#_workshop"></a><a class="link" href="#_workshop">Workshop</a></h1>
 <div class="sect1">
-<h2 id="workshop_prerequisites"><a class="anchor" href="#workshop_prerequisites"></a><a class="link" href="#workshop_prerequisites">1. Prerequisites</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>To complete the workshop, the following is required from participants:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Access to an OpenShift cluster on which the workshop components and applications have been deployed (see <a href="#workshop_provisioning">Provisioning</a>)</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The workshop does not require a separate cluster for each participant, but can be delivered on a shared cluster where each participant has access to his own namespace with the workshop applications.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-<li>
-<p>A Red Hat account to access the Developer Sandbox for OpenShift API Management and the Streams for Apache Kafka managed service.</p>
-<div class="paragraph">
-<p>A Red Hat account can be created by navigating to <a href="https://console.redhat.com">console.redhat.com</a> and following the <strong>Register for a Red Hat account</strong> link.</p>
-</div>
-</li>
-<li>
-<p>(Optional) the <code>oc</code> OpenShift CLI installed on the participants workstation. The version of <code>oc</code> should match the version of the OpenShift cluster.<br>
-The <code>oc</code> CLI can be obtained from the <em>command line tools</em> page of the OpenShift cluster or from the <a href="https://access.redhat.com/downloads/content/290">OpenShift Container Platform downloads page</a> on the Red Hat Customer Portal.</p>
-</li>
-<li>
-<p>(Optional) the <code>rhoas</code> (Red Hat OpenShift Application Services) CLI installed on the participants workstation.<br>
-The latest release of the <code>rhoas</code> CLI can be obtained from the <a href="https://github.com/redhat-developer/app-services-cli/releases/latest">Red Hat OpenShift Application Services CLI releases</a> page on GitHub.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="workshop_provisioning"><a class="anchor" href="#workshop_provisioning"></a><a class="link" href="#workshop_provisioning">2. Provisioning the workshop environment</a></h2>
-<div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The provisioning instructions assume that each participant uses a separate OpenShift cluster. The provisioning Ansible workbook needs to be run for each OpenShift cluster.
-Adapting the Ansible playbook for a shred OpenShift cluster is work in progress.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Clone the <a href="https://github.com/app-modernization-workshop-globex/ansible">Ansible playbook project</a> from Github to your local workstation.</p>
-</li>
-<li>
-<p>Copy the <code>inventories/inventory.template</code> file to <code>inventories/inventory</code>.</p>
-</li>
-<li>
-<p>Review the <code>inventories/inventory</code> file, and adapt where needed. In most cases, the file can be used as such. It assumes a trial version of OpenShift Streams for Apache Kafka will be used.</p>
-</li>
-<li>
-<p>Using <code>oc</code>, login as <em>cluster admin</em> into the OpenShift cluster.</p>
-</li>
-<li>
-<p>Run the provisioning playbook</p>
-<div class="listingblock console-input">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">ansible-playbook -i inventories/inventory playbooks/install.yml</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The playbook installs the following components:</p>
-</div>
-</li>
-<li>
-<p>The Red Hat OpenShift Application Services (RHOAS) operator in the <code>openshift-operators</code> namespace.</p>
-</li>
-<li>
-<p>The Service Binding operator in the <code>openshift-operators</code> namespace.</p>
-</li>
-<li>
-<p>The Globex Coolstuff application in the <code>globex</code> namespace.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="workshop_intro"><a class="anchor" href="#workshop_intro"></a><a class="link" href="#workshop_intro">3. Introduction</a></h2>
+<h2 id="workshop_add_streaming"><a class="anchor" href="#workshop_add_streaming"></a>Adding Event Streaming capabilities to the application</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_workshop_scenario"><a class="anchor" href="#_workshop_scenario"></a><a class="link" href="#_workshop_scenario">3.1. Workshop scenario</a></h3>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The workshop described in this paragraph is part of a larger workshop around application modernization and cloud-adoption. The complete workshop can be found <a href="https://github.com/redhat-mw-demos/app-mod-labs">here</a>.
-The narrative of the workshop evolves around a fictitious company, Globex, which recently embarked on a cloud adoption and application modernization journey for their flagship retail e-commerce application.
-The described in the following chapters start when the first phase of this modernization journey has been successfully delivered.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The retail application has been modernized and refactored for running on the hybrid cloud. The original monolith application has been decomposed in a number of smaller microservices.</p>
-</div>
-<div class="paragraph">
-<p>In Phase 2 of the modernization effort, the customer would like to enhance their modernized application to include new requirements and features.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Track how visitors engage with their website, derive intelligence out of user activity streams.</p>
-</li>
-<li>
-<p>Process and analyze this user activity stream to showcase Featured Products based on products with the most customer interest leading to a more personalized experience.</p>
-</li>
-<li>
-<p>Introduce a multi-channel approach to build a mobile app as a new channel of access - mobile development is most likely to be outsourced</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_common_challenges"><a class="anchor" href="#_common_challenges"></a><a class="link" href="#_common_challenges">3.2. Common Challenges</a></h3>
-<div class="paragraph">
-<p>There are however a number of challenges with the new requirements:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Adding new channels remains difficult, with a high risk of tight coupling to the existing services, which would slow down development productivity and time to market.</p>
-</li>
-<li>
-<p>The existing services need to be managed and secured to allow access for external partners and development teams. Governance remains a challenge.</p>
-</li>
-<li>
-<p>Adoption of new technologies such as event streaming requires time and new skills, which are not readily available inside the company.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>In order to cope with these challenges, the development team decides for a new approach.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_development_approach"><a class="anchor" href="#_development_approach"></a><a class="link" href="#_development_approach">3.3. Development approach</a></h3>
-<div class="paragraph">
-<p><strong>Adoption of Apache Kafka</strong> as a streaming platform to ingest and process user activity event streams.</p>
-</div>
-<div class="paragraph">
-<p><strong>API First approach</strong>:  the API contract is formalized in an OpenAPI spec document before development commences.  The API design phase is done collaboratively with all stakeholders. The first version of the OpenAPI spec document is pushed and managed in a schema registry, which acts as the system of truth. Mocks are created for the API.</p>
-</div>
-<div class="paragraph">
-<p><strong>Parallel Development</strong>: adopting an API first approach enables parallel development streams.
-- UI development teams and other API consumers start their development against the mocked APIs.
-- Backend development teams can implement the APIs using modern cloud-native frameworks and test the implementation against the OpenAPI spec to ensure that the implementation does not break the contract.</p>
-</div>
-<div class="paragraph">
-<p><strong>Manage and Secure the APIs</strong>: Adoption of an API management platform to expose the APIs in a secure and managed way for access by the mobile app and other 3rd party applications.</p>
-</div>
-<div class="paragraph">
-<p><strong>Managed cloud services</strong> as the preferred for easy and rapid adoption of new middleware components like the API Management platform and the streaming platform; this allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these complex components.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_workshop_goals"><a class="anchor" href="#_workshop_goals"></a><a class="link" href="#_workshop_goals">3.4. Workshop goals</a></h3>
-<div class="paragraph">
-<p>The primary goal of the workshop is to guide the user through</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Adding <strong>Event Streaming capabilities</strong> to an application to allow tracking user activity.</p>
-</li>
-<li>
-<p>Adding <strong>API management capabilities</strong> to an application to manage and secure the APIs for external access.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="workshop_add_streaming"><a class="anchor" href="#workshop_add_streaming"></a><a class="link" href="#workshop_add_streaming">4. Adding Event Streaming capabilities to the application</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_introduction"><a class="anchor" href="#_introduction"></a><a class="link" href="#_introduction">4.1. Introduction</a></h3>
+<h3 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h3>
 <div class="paragraph">
 <p>To support the business requirement of capturing and processing user activity on the Globex Coolstuff application, two new services have been developed:</p>
 </div>
@@ -437,7 +230,7 @@ The service also exposes a REST endpoint to expose the list of featured products
 </div>
 </div>
 <div class="sect2">
-<h3 id="_activities"><a class="anchor" href="#_activities"></a><a class="link" href="#_activities">4.2. Activities</a></h3>
+<h3 id="_activities"><a class="anchor" href="#_activities"></a>Activities</h3>
 <div class="paragraph">
 <p>In this part of the workshop you will:</p>
 </div>
@@ -453,7 +246,7 @@ The service also exposes a REST endpoint to expose the list of featured products
 </div>
 </div>
 <div class="sect2">
-<h3 id="_environment_and_prerequisites"><a class="anchor" href="#_environment_and_prerequisites"></a><a class="link" href="#_environment_and_prerequisites">4.3. Environment and prerequisites</a></h3>
+<h3 id="_environment_and_prerequisites"><a class="anchor" href="#_environment_and_prerequisites"></a>Environment and prerequisites</h3>
 <div class="paragraph">
 <p>The Globex Coolstuff application is deployed on an OpenShift cluster in a separate namespace. All activities in this part of the workshop can be done in the OpenShift console and do not require any tools to be installed on your workstation. However, the setup and the configuration of the Streams for Apache Kafka instance as well as the service binding can also be done using the Red Hat OpenShift Application Services (<code>rhoas</code>) CLI. Instructions for completing the workshop using the <code>rhoas</code> CLI can be found in the appendix at the end of the instructions.</p>
 </div>
@@ -472,9 +265,9 @@ The service also exposes a REST endpoint to expose the list of featured products
 </div>
 </div>
 <div class="sect2">
-<h3 id="_step_by_step_instructions"><a class="anchor" href="#_step_by_step_instructions"></a><a class="link" href="#_step_by_step_instructions">4.4. Step-By-Step Instructions</a></h3>
+<h3 id="_step_by_step_instructions"><a class="anchor" href="#_step_by_step_instructions"></a>Step-By-Step Instructions</h3>
 <div class="sect3">
-<h4 id="_explore_the_environment"><a class="anchor" href="#_explore_the_environment"></a><a class="link" href="#_explore_the_environment">4.4.1. Explore the environment</a></h4>
+<h4 id="_explore_the_environment"><a class="anchor" href="#_explore_the_environment"></a>Explore the environment</h4>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -536,7 +329,7 @@ The service also exposes a REST endpoint to expose the list of featured products
 </div>
 </div>
 <div class="sect3">
-<h4 id="_provision_and_configure_a_streams_for_apache_kafka_instance"><a class="anchor" href="#_provision_and_configure_a_streams_for_apache_kafka_instance"></a><a class="link" href="#_provision_and_configure_a_streams_for_apache_kafka_instance">4.4.2. Provision and configure a Streams for Apache Kafka instance</a></h4>
+<h4 id="_provision_and_configure_a_streams_for_apache_kafka_instance"><a class="anchor" href="#_provision_and_configure_a_streams_for_apache_kafka_instance"></a>Provision and configure a Streams for Apache Kafka instance</h4>
 <div class="paragraph">
 <p>In this step you provision a Streams for Apache Kafka instance and create a topic for the activity tracking events.</p>
 </div>
@@ -647,7 +440,7 @@ Replicas are copies of partitions in a topic. Partition replicas are distributed
 </div>
 </div>
 <div class="sect3">
-<h4 id="_binding_applications_to_streams_for_apache_kafka"><a class="anchor" href="#_binding_applications_to_streams_for_apache_kafka"></a><a class="link" href="#_binding_applications_to_streams_for_apache_kafka">4.4.3. Binding applications to Streams for Apache Kafka</a></h4>
+<h4 id="_binding_applications_to_streams_for_apache_kafka"><a class="anchor" href="#_binding_applications_to_streams_for_apache_kafka"></a>Binding applications to Streams for Apache Kafka</h4>
 <div class="paragraph">
 <p>Binding applications to services using Service Binding requires the Service Binding operator to be installed on the OpenShift cluster. To bind more specifically to a OpenShift Streams for Apache Kafka instance, the Red Hat OpenShift Application Services (RHOAS) operator is required. Both operators have been installed on your OpenShift cluster.</p>
 </div>
@@ -831,7 +624,7 @@ __  ____  __  _____   ___  __ ____  ______
 </div>
 </div>
 <div class="sect3">
-<h4 id="_testing_the_globex_coolstuff_application"><a class="anchor" href="#_testing_the_globex_coolstuff_application"></a><a class="link" href="#_testing_the_globex_coolstuff_application">4.4.4. Testing the Globex Coolstuff application</a></h4>
+<h4 id="_testing_the_globex_coolstuff_application"><a class="anchor" href="#_testing_the_globex_coolstuff_application"></a>Testing the Globex Coolstuff application</h4>
 <div class="paragraph">
 <p>Now that the Activity Tracking and Recommendation Engine apps are up and running, we can test the generation of activity events and the calculation of the top featured products.</p>
 </div>
@@ -894,7 +687,7 @@ Navigate to <a href="https://console.redhat.com">console.redhat.com</a>, select 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_appendix_use_the_rhoas_cli"><a class="anchor" href="#_appendix_use_the_rhoas_cli"></a><a class="link" href="#_appendix_use_the_rhoas_cli">Appendix: Use the <code>rhoas</code> CLI</a></h4>
+<h4 id="_appendix_use_the_rhoas_cli"><a class="anchor" href="#_appendix_use_the_rhoas_cli"></a>Appendix: Use the <code>rhoas</code> CLI</h4>
 <div class="paragraph">
 <p>If you prefer to use the <code>rhoas</code> CLI to provision and configure the OpenShift Streams for Apache Kafka instance, and to bind your applications to the Kafka instance using Service Binding, you can follow the following instructions:</p>
 </div>
@@ -1256,596 +1049,6 @@ rhoas cluster bind -n globex --app-name recommendation-engine --service-type kaf
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="workshop_api_mgmt"><a class="anchor" href="#workshop_api_mgmt"></a><a class="link" href="#workshop_api_mgmt">5. Adding API Management capabilities to the application</a></h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a><a class="link" href="#_introduction_2">5.1. Introduction</a></h3>
-<div class="paragraph">
-<p>To support the business requirement of managing and securing access to the services, Red Hat® OpenShift API Management will be used as the API management platform.</p>
-</div>
-<div class="paragraph">
-<p>Red Hat OpenShift API Management is a hosted and managed API management service delivered as an add-on product to Red Hat OpenShift Dedicated, a fully managed service of enterprise Kubernetes platform Red Hat OpenShift, and also on Red Hat OpenShift Service on AWS (ROSA)</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_activities_2"><a class="anchor" href="#_activities_2"></a><a class="link" href="#_activities_2">5.2. Activities</a></h3>
-<div class="paragraph">
-<p>In this part of the workshop you will:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Setup a Red Hat OpenShift API Management sandbox environment</p>
-</li>
-<li>
-<p>Manage and secure the already deployed Product catalog service.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_environment_and_prerequisites_2"><a class="anchor" href="#_environment_and_prerequisites_2"></a><a class="link" href="#_environment_and_prerequisites_2">5.3. Environment and prerequisites</a></h3>
-<div class="paragraph">
-<p>The <strong>Product catalog API</strong> is already deployed on the OpenShift cluster in the namespace you&#8217;ve been using for this portion of the workshop. You will use the  Red Hat OpenShift API management sandbox to manage this API.  All activities in this part of the workshop can be done in the Red Hat OpenShift API Management sandbox console and do not require any tools to be installed on your workstation.</p>
-</div>
-<div class="paragraph">
-<p>Prerequisites:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>A Red Hat account</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_step_by_step_instructions_2"><a class="anchor" href="#_step_by_step_instructions_2"></a><a class="link" href="#_step_by_step_instructions_2">5.4. Step-By-Step Instructions</a></h3>
-<div class="sect3">
-<h4 id="_signup_and_launch_red_hat_openshift_api_management_sandbox"><a class="anchor" href="#_signup_and_launch_red_hat_openshift_api_management_sandbox"></a><a class="link" href="#_signup_and_launch_red_hat_openshift_api_management_sandbox">5.4.1. Signup and launch Red Hat OpenShift API Management sandbox</a></h4>
-<div class="paragraph">
-<p>Register for a Red Hat OpenShift API Management sandbox by clicking on the red button in the <a href="https://developers.redhat.com/developer-sandbox/activities/share-java--applications-openshift-api-management">Developer Sandbox use case activities page</a>.</p>
-</div>
-<div class="paragraph">
-<p>You will be asked to confirm the request through an email sent to your inbox. Once you launch the sandbox, follow these steps to setup a Red Hat OpenShift API Management sandbox tenant</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>From the <strong>Projects</strong> dropdown on the top of the page, set the project namespace as <strong>&lt;username&gt;-dev</strong> from the projects that have been already created for you.</p>
-</li>
-<li>
-<p>Click on <strong>Search</strong> from the left navigation</p>
-</li>
-<li>
-<p>Click on <strong>Resources</strong> to search for <code>APIManagementTenant</code> and select it.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/tenant-search.png" alt="tenant search" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>Select <strong>Create APIManagementTenant</strong> button</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/create-APIManagementTenant.png" alt="create APIManagementTenant" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>You will be taken to the YAML configuration of this resource. Click the  Create button at the bottom of the YAML displayed.</p>
-</li>
-<li>
-<p>You will be taken to the Details page of this resource. Click on the YAML tab to view the changes to the YAML configuration.</p>
-</li>
-<li>
-<p>Watch for changes to the YAML of the APIManagementTenant resource, and wait for  the status to be displayed at the bottom of the YAML to become <code>status.provisioningStatus: 3scale account ready</code></p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/api-tenant-deployed.png" alt="api tenant deployed" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>The API Management  Tenant account is now provisioned and is ready for use.
-This may take a couple of minutes</p>
-</li>
-<li>
-<p>To access OpenShift API Management, navigate to the Launcher pane on the right side, select <code>API Management</code></p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/launcher-pane.png" alt="launcher pane" width="100%">
-</div>
-</div>
-</li>
-<li>
-<p>Choose to authenticate using Red Hat Single Sign-On, and  login using the identity provider that applies to you, e.g DevSandbox.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/sso-login.png" alt="sso login" width="100%">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/devsandbox-login.png" alt="devsandbox login" width="100%">
-</div>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_configure_and_manage_your_api"><a class="anchor" href="#_configure_and_manage_your_api"></a><a class="link" href="#_configure_and_manage_your_api">5.4.2. Configure and manage your API</a></h4>
-<div class="paragraph">
-<p>The following sections will guide you through</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>creating a Product</p>
-</li>
-<li>
-<p>creating a Backend</p>
-</li>
-<li>
-<p>defining Method, Metrics and Mapping rules</p>
-</li>
-<li>
-<p>creating an application plans</p>
-</li>
-<li>
-<p>creating an application for the default account/audience</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_create_an_api_product"><a class="anchor" href="#_create_an_api_product"></a><a class="link" href="#_create_an_api_product">5.4.3. Create an API Product</a></h4>
-<div class="paragraph">
-<p>A product is a customer-facing API that packages one or more backends. You will create an API  Product manually with the following instructions</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>In a browser window navigate to the Red Hat OpenShift API Management</p>
-</li>
-<li>
-<p>In the Dashboard, under the APIs section, click <strong>Create Product</strong> in the <strong><em>Products</em></strong> card.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/rhoam-dashboard.png" alt="Red Hat OpenShift API Management Dashboard">
-</div>
-</div>
-</li>
-<li>
-<p>Provide the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/create-product.png" alt="create product" width="100%">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Name</strong>: <code>globex-product-catalog</code></p>
-</li>
-<li>
-<p><strong>System name</strong>: <code>globex-product</code></p>
-</li>
-<li>
-<p><strong>Description</strong>: <code>Optional field containing more details about the product.</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Product</strong>.</p>
-</li>
-<li>
-<p>A Product <code>globex-product-catalog</code> is created and you are taken to the Product Overview page</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_create_an_api_backend"><a class="anchor" href="#_create_an_api_backend"></a><a class="link" href="#_create_an_api_backend">5.4.4. Create an API Backend</a></h4>
-<div class="paragraph">
-<p>The next step is to create a Backend which for the Product Catalogue API which you will then add to the Product you&#8217;ve created in the previous step</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Go to the Dashboard.</p>
-</li>
-<li>
-<p>Under the APIs section, click Create Backend in the <strong><em>Backends</em></strong> card.</p>
-</li>
-<li>
-<p>Provide the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/create-backend.png" alt="create backend">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Name</strong>: <code>globex-catalog</code>.</p>
-</li>
-<li>
-<p><strong>System name</strong>: <code>globex-catalog</code>.</p>
-</li>
-<li>
-<p><strong>Description</strong>: <code>Optional field containing more details about the backend</code>.</p>
-</li>
-<li>
-<p><strong>Private endpoint</strong>: Base URL of the Product Catalog API.</p>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Here are instruction how to access the Private Endpoint of the Product Catalog API.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Access the Developer Perspective Topology of the OpenShift environment where the Globex application has been deployed</p>
-</li>
-<li>
-<p>Click on the <strong>catalog-service icon</strong> and you will see the deployment details popup on the right hand side</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/globex-deployment-topology-catalog-service.png" alt="globex deployment topology catalog service">
-</div>
-</div>
-</li>
-<li>
-<p>Copy the Location as present at the bottom of this under Routes. This would look something like this <code><a href="https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443" class="bare">https://catalog-globex-recommendation.apps.cluster-pppk8.pppk8.sandbox45.opentlc.com:443</a></code></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Backend</strong>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_define_method_metrics_and_mapping_rules"><a class="anchor" href="#_define_method_metrics_and_mapping_rules"></a><a class="link" href="#_define_method_metrics_and_mapping_rules">5.4.5. Define Method, Metrics and Mapping rules</a></h4>
-<div class="paragraph">
-<p><strong><em>Setup a new Method</em></strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Navigate to the Product &gt; globex-catalog &gt; Integration &gt; Methods &amp; Metrics</p>
-</li>
-<li>
-<p>Click <strong>New method</strong></p>
-</li>
-<li>
-<p>Provide the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/new-method.png" alt="new method">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Friendly name</strong>: <code>getPaginatedProductsList</code></p>
-</li>
-<li>
-<p><strong>System name</strong>: <code>getPaginatedProductsList</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Method</strong></p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong><em>Setup a new Metric</em></strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Navigate to the Product &gt; globex-catalog &gt; Integration &gt; Methods &amp; Metrics</p>
-</li>
-<li>
-<p>Click <strong>New metric</strong></p>
-</li>
-<li>
-<p>Provide the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/new-metric.png" alt="new metric">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Friendly name</strong>: <code>Hits</code></p>
-</li>
-<li>
-<p><strong>System name</strong>: <code>hits</code></p>
-</li>
-<li>
-<p><strong>Unit</strong>: <code>hit</code></p>
-</li>
-<li>
-<p><strong>Description</strong>: <code>Number of API hits</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Metric</strong></p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><strong><em>Setup a new Mapping Rule</em></strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Navigate to the Product &gt; globex-catalog &gt; Integration &gt; Mapping Rules</p>
-</li>
-<li>
-<p>Click <strong>Create Mapping Rule</strong></p>
-</li>
-<li>
-<p>Provide the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/new-mapping-rule.png" alt="new mapping rule">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Verb</strong>: <code>GET</code></p>
-</li>
-<li>
-<p><strong>Pattern</strong>: <code>/services/products</code></p>
-</li>
-<li>
-<p><strong>Metric or Method to increment</strong>: Choose <code>getPaginatedProductsList</code></p>
-</li>
-<li>
-<p><strong>Increment by</strong>: <code>1</code></p>
-</li>
-<li>
-<p>Check the checkbox <strong>Last</strong></p>
-</li>
-<li>
-<p><strong>Position</strong>: 0</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Mapping Rule</strong></p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_create_an_application_plans_to_define_a_customer_facing_api_product"><a class="anchor" href="#_create_an_application_plans_to_define_a_customer_facing_api_product"></a><a class="link" href="#_create_an_application_plans_to_define_a_customer_facing_api_product">5.4.6. Create an application plans to define a customer-facing API product</a></h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Go to the Dashboard</p>
-</li>
-<li>
-<p>Under the API section, click on  <code>globex-product-catalog</code> under the <strong><em>Product</em></strong></p>
-</li>
-<li>
-<p>In Applications &gt; Application Plans menu on the left hand side, click on <strong>Create Application Plan</strong></p>
-</li>
-<li>
-<p>Provide the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/create-app-plan.png" alt="create app plan">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Name</strong>: <code>globex-app-plan</code></p>
-</li>
-<li>
-<p><strong>System name</strong>: <code>globex-app-plan</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Application Plan</strong>.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_create_applications_for_the_default_account"><a class="anchor" href="#_create_applications_for_the_default_account"></a><a class="link" href="#_create_applications_for_the_default_account">5.4.7. Create applications for the default account</a></h4>
-<div class="paragraph">
-<p>An application is always associated with an application plan. Applications are stored within developer accounts. In basic 3scale plans only a single application is allowed. In enterprise plans, multiple applications per account are allowed.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Navigate to Audience &gt; Accounts &gt; Listing.</p>
-</li>
-<li>
-<p>Click <strong>Create</strong> to create a new Developer account.</p>
-</li>
-<li>
-<p>Provide the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/create-audience.png" alt="create audience">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Username</strong>: <code>globex-dev</code></p>
-</li>
-<li>
-<p><strong>Email</strong>: enter an email address</p>
-</li>
-<li>
-<p><strong>Password</strong>: enter a password</p>
-</li>
-<li>
-<p><strong>Organization/Group Name</strong>: <code>Globex</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create</strong></p>
-</li>
-<li>
-<p>Go to the <strong>Application tab</strong> of this account through the navigation on the top of the page.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/audience-add-app.png" alt="audience add app">
-</div>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Application</strong>.</p>
-</li>
-<li>
-<p>You will view the <strong>New Application</strong> page</p>
-</li>
-<li>
-<p>Choose the following details:</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/create-app.png" alt="create app">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Product</strong>: <code>globex-catalog</code></p>
-</li>
-<li>
-<p><strong>Application plan</strong>: <code>globex-app-plan</code></p>
-</li>
-<li>
-<p><strong>Name</strong>: <code>globex-application</code></p>
-</li>
-<li>
-<p><strong>Description</strong>: a suitable description</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Click <strong>Create Application</strong>.</p>
-</li>
-<li>
-<p>You can see your new application in Dashboard &gt; Audience &gt; Accounts &gt; Applications &gt; Listing</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_testing_the_globex_coolstuff_application_2"><a class="anchor" href="#_testing_the_globex_coolstuff_application_2"></a><a class="link" href="#_testing_the_globex_coolstuff_application_2">5.4.8. Testing the Globex Coolstuff application</a></h4>
-<div class="paragraph">
-<p><strong>Sending requests to your product to test the integration of a backend</strong></p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Navigate to the Product &gt; <strong>globex-catalog</strong> &gt; Integration &gt; Settings</p>
-</li>
-<li>
-<p>Under <strong>AUTHENTICATION</strong> section, change the following</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/auth-settings.png" alt="auth settings">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>API KEY (USER_KEY) BASICS &gt; Auth user key</strong>: <code>api_key</code></p>
-</li>
-<li>
-<p><strong>CREDENTIALS LOCATION</strong>: Choose <code>As HTTP Headers</code></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Next, to promote the new APIcast configuration to staging, navigate to the Products&gt; <code>globex-product-catalog</code> &gt; Integration &gt; Configuration.</p>
-</li>
-<li>
-<p>You will see the Mapping Rules, Credential Location and the Backend</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Under <strong>APIcast Configuration</strong>, click Promote to Staging APIcast.</p>
-</li>
-<li>
-<p>Under Staging APIcast, promote the APIcast configuration to production by clicking Promote to Production APIcast.</p>
-</li>
-<li>
-<p>To test requests to your API product, copy the command provided in <strong>Example curl for testing</strong> and run it in a terminal.</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/curl-test-api.png" alt="curl test api">
-</div>
-</div>
-</li>
-<li>
-<p>After you run the command, you should get a response containing results from Catalog API.</p>
-</li>
-<li>
-<p>In real life, the mobile app would be using the staging and production API endpoints securely to access the APIs.</p>
-</li>
-<li>
-<p>Click on the Analytics &#8594; Traffic link on the left hand side. You will see the Hits details</p>
-<div class="imageblock">
-<div class="content">
-<img src="_images/04/api-traffic.png" alt="api traffic">
-</div>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<nav class="pagination">
-  <span class="prev"><a href="03-demo.html" class="query-params-link">3. See the Solution in Action</a></span>
-</nav>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
