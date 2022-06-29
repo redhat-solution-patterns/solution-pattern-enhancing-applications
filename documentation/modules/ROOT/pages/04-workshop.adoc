@@ -30,7 +30,7 @@ The latest release of the `rhoas` CLI can be obtained from the link:https://gith
 [IMPORTANT]
 ====
 The provisioning instructions assume that each participant uses a separate OpenShift cluster. The provisioning Ansible workbook needs to be run for each OpenShift cluster.
-Adapting the Ansible playbook for a shred OpenShift cluster is work in progress. 
+Adapting the Ansible playbook for a shared OpenShift cluster is work in progress. 
 ====
 
 * Clone the link:https://github.com/app-modernization-workshop-globex/ansible[Ansible playbook project] from Github to your local workstation.
