@@ -262,11 +262,11 @@ Once a first version of the OpenAPI spec document is ready, it is pushed and man
 Mocks are created for the API.</p>
 </div>
 <div class="paragraph">
-<p><strong>Parallel Development</strong> streams. The API first approach enables parallel development streams. UUI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
+<p><strong>Parallel Development</strong> streams. The API first approach enables parallel development streams. UI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
 In parallel, backend development teams can implement the APIs using modern cloud-native frameworks. They continuously test the implementation against the OpenAPI spec to ensure that the implementation does not break the contract.</p>
 </div>
 <div class="paragraph">
-<p><strong>Manage and Secure the APIs</strong>. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other party applications.</p>
+<p><strong>Manage and Secure the APIs</strong>. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other third party applications.</p>
 </div>
 <div class="paragraph">
 <p>Adoption of <strong>Apache Kafka</strong> as a streaming platform to ingest and process user activity event streams.</p>
@@ -316,7 +316,7 @@ In parallel, backend development teams can implement the APIs using modern cloud
 <div class="title">Figure 1. Globex Runtime Architecture</div>
 </div>
 <div class="paragraph">
-<p>Visitors engage with the retail website in a number of ways</p>
+<p>Visitors engage with the Globex retail website in a number of ways</p>
 </div>
 <div class="ulist">
 <ul>
@@ -327,21 +327,23 @@ In parallel, backend development teams can implement the APIs using modern cloud
 <p>search for products</p>
 </li>
 <li>
-<p>like/favourite a product
-view product details</p>
+<p>like a product / add a product to favourites</p>
 </li>
 <li>
-<p>add to cart</p>
+<p>view product details</p>
+</li>
+<li>
+<p>add products to the shopping cart</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>Each of these activities generate a stream of events which are captured by  the <strong>user-activity-tracker</strong> service. This service then pushes the events into the  Kafka streaming platform.
-The events  can then be consumed by other services such as the <strong>product-recommendation-engine</strong> which will power the list of  featured products.
-A new <strong>Featured Products</strong> section is created to showcase the top 10 recommended products as recommended</p>
+<p>Each of these activities generate a stream of events which are captured by  the <strong>User Activity Tracking</strong> service. This service then pushes the events into the Kafka streaming platform.
+The events can then be consumed by other services such as the <strong>Product Recommendation</strong> service which powers the list of featured products.
+A new <strong>Featured Products</strong> section is created in the front-end web application to showcase the top featured products.</p>
 </div>
 <div class="paragraph">
-<p>Since Globex does not want to allow  direct access to these  backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform</p>
+<p>Since Globex does not want to allow direct access to these backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform.</p>
 </div>
 </div>
 </div>
