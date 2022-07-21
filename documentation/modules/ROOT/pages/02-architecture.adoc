@@ -28,10 +28,10 @@ In order to cope with these challenges, the development team decides for a new a
 Once a first version of the OpenAPI spec document is ready, it is pushed and managed in a service registry, which acts a the system of truth.
 Mocks are created for the API.
 
-*Parallel Development* streams. The API first approach enables parallel development streams. UUI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
+*Parallel Development* streams. The API first approach enables parallel development streams. UI development teams and other API consumers can start their development against the mocked APIs, without having to wait for an actual implementation.
 In parallel, backend development teams can implement the APIs using modern cloud-native frameworks. They continuously test the implementation against the OpenAPI spec to ensure that the implementation does not break the contract.
 
-*Manage and Secure the APIs*. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other party applications.
+*Manage and Secure the APIs*. An API management platform allows to expose the APIs in a secure and managed manner for access by the mobile app and other third party applications.
 
 Adoption of *Apache Kafka* as a streaming platform to ingest and process user activity event streams.
 
@@ -55,20 +55,19 @@ A preference for *managed cloud services* for an easy and rapid adoption of new 
 .Globex Runtime Architecture 
 image::02/globex-02-runtimearchitecture.png[width=105%]
 
-Visitors engage with the retail website in a number of ways
+Visitors engage with the Globex retail website in a number of ways
 
 * view list of products
 * search for products
-* like/favourite a product 
-view product details 
-* add to cart
+* like a product / add a product to favourites
+* view product details 
+* add products to the shopping cart
 
-Each of these activities generate a stream of events which are captured by  the *user-activity-tracker* service. This service then pushes the events into the  Kafka streaming platform. 
-The events  can then be consumed by other services such as the *product-recommendation-engine* which will power the list of  featured products.
-A new *Featured Products* section is created to showcase the top 10 recommended products as recommended 
+Each of these activities generate a stream of events which are captured by  the *User Activity Tracking* service. This service then pushes the events into the Kafka streaming platform. 
+The events can then be consumed by other services such as the *Product Recommendation* service which powers the list of featured products.
+A new *Featured Products* section is created in the front-end web application to showcase the top featured products. 
 
-Since Globex does not want to allow  direct access to these  backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform
-
+Since Globex does not want to allow direct access to these backend API services to other channels such as the mobile app, an API Management platform is introduced. The mobile app will access the services through the API Management platform.
 
 [#more_tech]
 == More about the technology stack
