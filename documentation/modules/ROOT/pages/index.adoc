@@ -2,6 +2,7 @@
 :page-layout: home
 :!sectids:
 :sectnums:
+:sectlinks:
 :doctype: book
 
 [discrete]

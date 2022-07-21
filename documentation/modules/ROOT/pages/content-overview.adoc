@@ -6,8 +6,8 @@
 xref:index.adoc[{counter:module}. Solution Pattern]::
 + 
 xref:index.adoc#use-cases[{counter:submodule1:1}. Use cases] +
-xref:01-pattern.adoc#background[{counter:submodule1}. The story behind this solution pattern] +
-xref:01-pattern#solution[{counter:submodule1}. The solution] +
+xref:index.adoc#background[{counter:submodule1}. The story behind this solution pattern] +
+xref:index.adoc#solution[{counter:submodule1}. The solution] +
 xref:index.adoc#_explore_more_solution_patterns[{counter:submodule1}. Explore more solution patterns]
 +
 xref:02-architecture.adoc[{counter:module}. Architecture]::
