@@ -40,13 +40,13 @@ A preference for *managed cloud services* for an easy and rapid adoption of new 
 [#tech_stack]
 == Technology Stack
 
-. Red Hat OpenShift API Management
-. Red Hat OpenShift Streams for Apache Kafka
-. Red Hat build of Quarkus
-. Apicurio
+. https://developers.redhat.com/products/red-hat-openshift-api-management/overview[Red Hat OpenShift API Management^]
+. https://developers.redhat.com/products/red-hat-openshift-streams-for-apache-kafka[Red Hat OpenShift Streams for Apache Kafka^]
+. https://developers.redhat.com/products/quarkus/overview[Red Hat build of Quarkus^]
+. https://studio.apicur.io/[Apicurio^]
 . Service Registry
-. Microcks
-. Quay
+. https://microcks.io/[Microcks^]
+. https://quay.io/[Quay^]
 
 [#in_depth]
 == An in-depth look at the solution's architecture
