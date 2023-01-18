@@ -27,4 +27,6 @@
 ** xref:04-workshop.adoc#workshop_add_streaming[{counter:submodule4}. Adding Event Streaming capabilities]
 ** xref:04-workshop.adoc#workshop_api_mgmt[{counter:submodule4}. Adding API Management capabilities]
 
+* xref:05-devresources.adoc[{counter:module}. Developer Resources]
+
 * https://redhat-solution-patterns.github.io/[Other Red Hat Solution Patterns]

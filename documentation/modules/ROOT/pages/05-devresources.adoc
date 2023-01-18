@@ -1,0 +1,13 @@
+:sectnums:
+:sectlinks:
+:doctype: book
+= Enhancing Applications with Application Services
+
+= Developer Resources
+
+Here you find a list of developer resources relevant to this Solution Pattern
+
+https://developers.redhat.com/about[{counter:submodule5}. Register] for Red Hat developers subscription to get access to Red Hat products for personal use at no cost +
+https://developers.redhat.com/products/red-hat-openshift-api-management/overview[{counter:submodule5}. Red Hat OpenShift API Management] +
+https://developers.redhat.com/products/red-hat-openshift-streams-for-apache-kafka/overview[{counter:submodule5}. Red Hat OpenShift Streams for Apache Kafka] +
+https://developers.redhat.com/products/quarkus/overview[{counter:submodule5}. Quarkus]
