@@ -32,7 +32,7 @@ xref:04-workshop.adoc#workshop_api_mgmt[{counter:submodule4}. Adding API Managem
 +
 xref:05-devresources.adoc[{counter:module}. Developer Resources]::
 +
-https://developers.redhat.com/register[{counter:submodule5}. Register] for Red Hat developers subscription to get access to Red Hat products for personal use at no cost +
+https://developers.redhat.com/about[{counter:submodule5}. Register] for Red Hat developers subscription to get access to Red Hat products for personal use at no cost +
 https://developers.redhat.com/products/red-hat-openshift-api-management/overview[{counter:submodule5}. Red Hat OpenShift API Management] +
 https://developers.redhat.com/products/red-hat-openshift-streams-for-apache-kafka/overview[{counter:submodule5}. Red Hat OpenShift Streams for Apache Kafka] +
 https://developers.redhat.com/products/quarkus/overview[{counter:submodule5}. Quarkus]
