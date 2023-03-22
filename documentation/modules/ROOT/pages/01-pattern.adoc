@@ -38,7 +38,7 @@ Taking advantage of this new momentum, the business comes up with new requiremen
 
 This solution pattern focuses on:
 
-* The introduction of a streaming platform (Apache Kafka) to generate a stream of user activity events from the application web UI. User activity events are sent to a new service using a REST API. This service forwrds the events into the streaming platform. +
+* The introduction of a streaming platform (Apache Kafka) to generate a stream of user activity events from the application web UI. User activity events are sent to a new service using a REST API. This service forwards the events into the streaming platform. +
 The stream of user activity events is processed in real-time using a stream processing library to generate a list of featured products that can be highlighted on the web site.
 * The introduction of an API Management solution (Red Hat OpenShift API management) to expose, secure and manage the APIs to the application backend services. This allows to introduce new channels (mobile application, B2B transactions) in a controlled way. +
 Using a contract-first approach, the APIs are specified in a OpenAPI spec document and managed in a registry (Red Hat Openshift Service Registry). Once implemented, they are onboarded on the API management platform. +
