@@ -10,7 +10,7 @@ The architecture will need to support these paradigms
 * API First Approach resulting in OpenAPI specifications
 * Enable Parallel development streams
 * Managed API Management platform for securing and managing the backend services
-* Managed  Kafka to process user activity event streams
+* AMQ Streams (Apache Kafka) to process user activity event streams
 * Preference for a managed cloud services for easy and rapid ramp up
 
 [#challenges]
@@ -35,13 +35,11 @@ In parallel, backend development teams can implement the APIs using modern cloud
 
 Adoption of *Apache Kafka* as a streaming platform to ingest and process user activity event streams.
 
-A preference for *managed cloud services* for an easy and rapid adoption of new middleware components like the API Management platform and Apache Kafka. This allows the teams to focus on the business requirements, without the need to invest in skills and infrastructure to deploy and maintain these components.
-
 [#tech_stack]
 == Technology Stack
 
 . https://developers.redhat.com/products/red-hat-openshift-api-management/overview[Red Hat OpenShift API Management^]
-. https://developers.redhat.com/products/red-hat-openshift-streams-for-apache-kafka[Red Hat OpenShift Streams for Apache Kafka^]
+. https://developers.redhat.com/products/amq/overview[Red Hat AMQ Streams for Apache Kafka^]
 . https://developers.redhat.com/products/quarkus/overview[Red Hat build of Quarkus^]
 . https://studio.apicur.io/[Apicurio^]
 . Service Registry
