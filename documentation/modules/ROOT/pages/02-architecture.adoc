@@ -200,6 +200,3 @@ The various components of the application run on various footprints.
 * The https://quay.io/ is a hosted containers repository which stores the container images for the backend and UI application.
 
 
-[img-globex-02-deployment-architecture]
-.Kafdrop - Deployment Architecture
-image::02/globex-02-deployment-architecture.png[width=100%]
