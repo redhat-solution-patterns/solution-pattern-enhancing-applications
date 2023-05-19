@@ -16,7 +16,7 @@
 *** xref:03-demo.adoc#demo_prerequisites[{submodule3}.{counter:submodule31}. Prerequisites]
 *** xref:03-demo.adoc#demo_step_by_step[{submodule3}.{counter:submodule31}. Step by step guide]
 **** xref:03-demo.adoc#_api_first_approach[API First approach]
-**** xref:03-demo.adoc#_managed_apache_kafka_cloud_service[Managed Apache Kafka Cloud Service]
+**** xref:03-demo.adoc#_apache_kafka_service[Apache Kafka Service]
 **** xref:03-demo.adoc#_inner_development_loop[Inner Development Loop]
 **** xref:03-demo.adoc#_managed_api_management_cloud_service[Managed API Management Cloud Service]
 
